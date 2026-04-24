@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -63,14 +64,11 @@
     <style>
         body { font-family: 'Cairo', sans-serif; background-color: #f3f4f6; scroll-behavior: smooth; }
         
-        /* تحسينات الأداء لحل مشكلة اللاج */
         .glass-panel {
             background: rgba(255, 255, 255, 0.95);
-            /* تقليل الـ blur من 10 إلى 4 وتفعيل الدعم لمتصفح سفاري لتخفيف الضغط على المعالج */
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             border: 1px solid rgba(255, 255, 255, 0.5);
-            /* تفعيل تسريع الهاردوير للبطاقات */
             transform: translateZ(0); 
         }
 
@@ -78,7 +76,6 @@
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
         }
 
-        /* تحسين أنيميشن الحركة لتجنب إعادة رسم الصفحة (Repaint) المسببة للبطء */
         @keyframes smooth-bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
@@ -88,18 +85,18 @@
             will-change: transform;
         }
 
-        /* تأثيرات لبطاقات الأعمال */
-        .portfolio-card:hover .portfolio-overlay {
-            opacity: 1;
-        }
-        .portfolio-card:hover img {
-            transform: scale(1.05);
+        @media (hover: hover) and (pointer: fine) {
+            .portfolio-card:hover .portfolio-overlay {
+                opacity: 1;
+            }
+            .portfolio-card:hover img {
+                transform: scale(1.05);
+            }
         }
         
-        .map-interactive-btn {
-            background: rgba(255,255,255,0.9);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
+        .map-placeholder {
+            background: #e5e7eb url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="%239ca3af" stroke-width="2"><path d="M30 20l40-10v60l-40 10zM10 30l20-10v60l-20 10zM70 10l20 10v60l-20-10z"/></svg>') center center no-repeat;
+            background-size: 50%;
         }
     </style>
 </head>
@@ -125,7 +122,7 @@
                 مصمم مواقع محترف يقدم خدمات محاسبية وتسويقية ضمن الأعمال الحرة الخاصة به 
             </p>
             
-            <a href="#portfolio" class="mt-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300">
+            <a href="#portfolio" class="mt-2 bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg">
                 شاهد أعمالي
             </a>
         </div>
@@ -144,16 +141,16 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
 
             <!-- WhatsApp Contact Card -->
-            <div class="glass-panel rounded-2xl p-6 shadow-md text-center transform transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div class="glass-panel rounded-2xl p-6 shadow-md text-center">
                 <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
                     <i class="fab fa-whatsapp"></i>
                 </div>
                 <h3 class="text-xl font-bold mb-4">تواصل عبر واتساب</h3>
                 <div class="space-y-3">
-                    <a href="https://wa.me/201206244875" target="_blank" class="block w-full py-3 px-4 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition duration-300">
+                    <a href="https://wa.me/201206244875" target="_blank" class="block w-full py-3 px-4 bg-green-500 text-white font-semibold rounded-lg">
                         <i class="fab fa-whatsapp mr-2"></i> 01206244875
                     </a>
-                    <a href="https://wa.me/201021974996" target="_blank" class="block w-full py-3 px-4 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition duration-300">
+                    <a href="https://wa.me/201021974996" target="_blank" class="block w-full py-3 px-4 bg-green-500 text-white font-semibold rounded-lg">
                         <i class="fab fa-whatsapp mr-2"></i> 01021974996
                     </a>
                 </div>
@@ -163,7 +160,7 @@
             <div class="space-y-6">
 
                 <!-- Facebook Mock Preview -->
-                <a href="https://www.facebook.com/share/1CWMh7BYxU/" target="_blank" class="block glass-panel rounded-2xl p-5 shadow-sm hover:shadow-md transition duration-300 border-l-4 border-blue-600">
+                <a href="https://www.facebook.com/share/1CWMh7BYxU/" target="_blank" class="block glass-panel rounded-2xl p-5 shadow-sm border-l-4 border-blue-600">
                     <div class="flex items-center justify-between mb-3">
                         <div class="flex items-center space-x-3 space-x-reverse">
                             <img src="https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775836472/rwwdvrpo2afmvktqd1da.jpg" alt="Shehab Tarek Salah" class="w-12 h-12 rounded-full border border-gray-200 object-cover object-top">
@@ -180,7 +177,7 @@
                 </a>
 
                 <!-- Instagram Mock Preview -->
-                <a href="https://www.instagram.com/shehab_tarek1?igsh=c282OXltYXNuazc0" target="_blank" class="block glass-panel rounded-2xl p-5 shadow-sm hover:shadow-md transition duration-300 instagram-gradient text-white">
+                <a href="https://www.instagram.com/shehab_tarek1?igsh=c282OXltYXNuazc0" target="_blank" class="block glass-panel rounded-2xl p-5 shadow-sm instagram-gradient text-white">
                     <div class="flex items-center justify-between mb-3">
                         <div class="flex items-center space-x-3 space-x-reverse">
                             <div class="p-0.5 bg-white rounded-full">
@@ -193,7 +190,7 @@
                         </div>
                         <i class="fab fa-instagram text-4xl opacity-80"></i>
                     </div>
-                    <div class="bg-white/20 hover:bg-white/30 transition py-2 rounded text-center font-semibold mt-2 text-sm">
+                    <div class="bg-white/20 py-2 rounded text-center font-semibold mt-2 text-sm">
                         <i class="fas fa-camera ml-1"></i> متابعة على إنستجرام
                     </div>
                 </a>
@@ -216,12 +213,12 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 
-                <!-- الموقع الأول -->
+                <!-- الموقع الأول: كلية التجارة -->
                 <div class="portfolio-card glass-panel rounded-2xl overflow-hidden shadow-md flex flex-col">
-                    <div class="relative h-48 overflow-hidden bg-gray-200">
-                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=600&auto=format&fit=crop" alt="أعمال شهاب طارق - كلية التجارة" class="w-full h-full object-cover transition duration-500">
+                    <div class="relative w-full aspect-[4/3] overflow-hidden bg-gray-200">
+                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_500,q_auto,f_auto/v1777053970/f26v32ke81rki5oakitk.jpg" alt="أعمال شهاب طارق - موقع كلية التجارة" class="w-full h-full object-cover transition duration-500">
                         <div class="portfolio-overlay absolute inset-0 bg-blue-900 bg-opacity-80 flex items-center justify-center opacity-0 transition duration-300">
-                            <a href="https://faculty-of-commerce.netlify.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold hover:bg-blue-50 transition transform hover:scale-105">
+                            <a href="https://faculty-of-commerce.netlify.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold">
                                 <i class="fas fa-external-link-alt ml-2"></i>معاينة الموقع
                             </a>
                         </div>
@@ -231,41 +228,43 @@
                             <h3 class="text-lg font-bold text-gray-800">كلية التجارة</h3>
                             <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded font-semibold">تعليمي</span>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4 flex-grow">تصميم موقع تعريفي وخدمي لكلية التجارة، يعرض أحدث الأخبار والخدمات الطلابية بشكل عصري.</p>
-                        <a href="https://faculty-of-commerce.netlify.app/" target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold text-sm mt-auto inline-flex items-center">
-                            <i class="fas fa-link ml-1"></i> رابط الموقع
+                        <p class="text-gray-600 text-sm mb-5 flex-grow">تصميم موقع تعريفي وخدمي لكلية التجارة، يعرض أحدث الأخبار والخدمات الطلابية بشكل عصري.</p>
+                        <!-- زر ثابت وسلس تماماً -->
+                        <a href="https://faculty-of-commerce.netlify.app/" target="_blank" class="mt-auto flex items-center justify-center w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-xl">
+                            <i class="fas fa-external-link-alt ml-2"></i> زيارة الموقع
                         </a>
                     </div>
                 </div>
 
-                <!-- الموقع الثاني -->
+                <!-- الموقع الثاني: خدمات كلية التجارة -->
                 <div class="portfolio-card glass-panel rounded-2xl overflow-hidden shadow-md flex flex-col">
-                    <div class="relative h-48 overflow-hidden bg-gray-200">
-                        <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=600&auto=format&fit=crop" alt="أعمال شهاب طارق - كلية التجارة 2026" class="w-full h-full object-cover transition duration-500">
+                    <div class="relative w-full aspect-[4/3] overflow-hidden bg-gray-200">
+                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_500,q_auto,f_auto/v1777053979/db2pwzzdnakgowp9tx7u.jpg" alt="أعمال شهاب طارق - خدمات كلية التجارة 2026" class="w-full h-full object-cover transition duration-500">
                         <div class="portfolio-overlay absolute inset-0 bg-blue-900 bg-opacity-80 flex items-center justify-center opacity-0 transition duration-300">
-                            <a href="https://faculty-of-commerce-2026.web.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold hover:bg-blue-50 transition transform hover:scale-105">
+                            <a href="https://faculty-of-commerce-2026.web.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold">
                                 <i class="fas fa-external-link-alt ml-2"></i>معاينة الموقع
                             </a>
                         </div>
                     </div>
                     <div class="p-5 flex-grow flex flex-col">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-bold text-gray-800">كلية التجارة 2026</h3>
+                            <h3 class="text-lg font-bold text-gray-800">خدمات كلية التجارة</h3>
                             <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded font-semibold">تطبيق ويب</span>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4 flex-grow">نسخة مطورة ومحدثة (2026) لمنصة كلية التجارة مع واجهة مستخدم متقدمة وتجربة استخدام سلسة.</p>
-                        <a href="https://faculty-of-commerce-2026.web.app/" target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold text-sm mt-auto inline-flex items-center">
-                            <i class="fas fa-link ml-1"></i> رابط الموقع
+                        <p class="text-gray-600 text-sm mb-5 flex-grow">نسخة مطورة ومحدثة (2026) لمنصة كلية التجارة مع واجهة مستخدم متقدمة وتجربة استخدام سلسة.</p>
+                        <!-- زر ثابت وسلس تماماً -->
+                        <a href="https://faculty-of-commerce-2026.web.app/" target="_blank" class="mt-auto flex items-center justify-center w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-xl">
+                            <i class="fas fa-external-link-alt ml-2"></i> زيارة الموقع
                         </a>
                     </div>
                 </div>
 
-                <!-- الموقع الثالث -->
+                <!-- الموقع الثالث: المسجد -->
                 <div class="portfolio-card glass-panel rounded-2xl overflow-hidden shadow-md flex flex-col">
-                    <div class="relative h-48 overflow-hidden bg-gray-200">
-                        <img src="https://images.unsplash.com/photo-1564121211835-e88c852648ab?q=80&w=600&auto=format&fit=crop" alt="أعمال شهاب طارق - مسجد بيرستورب" class="w-full h-full object-cover transition duration-500">
+                    <div class="relative w-full aspect-[4/3] overflow-hidden bg-gray-200">
+                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_500,q_auto,f_auto/v1777053974/burcenkiplmzhevq730f.jpg" alt="أعمال شهاب طارق - موقع المسجد" class="w-full h-full object-cover transition duration-500">
                         <div class="portfolio-overlay absolute inset-0 bg-blue-900 bg-opacity-80 flex items-center justify-center opacity-0 transition duration-300">
-                            <a href="https://perstorp-moske.netlify.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold hover:bg-blue-50 transition transform hover:scale-105">
+                            <a href="https://perstorp-moske.netlify.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold">
                                 <i class="fas fa-external-link-alt ml-2"></i>معاينة الموقع
                             </a>
                         </div>
@@ -275,97 +274,102 @@
                             <h3 class="text-lg font-bold text-gray-800">مسجد بيرستورب</h3>
                             <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">إسلامي</span>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4 flex-grow">موقع تعريفي ورسمي لمسجد بيرستورب يعرض مواقيت الصلاة والفعاليات الإسلامية.</p>
-                        <a href="https://perstorp-moske.netlify.app/" target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold text-sm mt-auto inline-flex items-center">
-                            <i class="fas fa-link ml-1"></i> رابط الموقع
+                        <p class="text-gray-600 text-sm mb-5 flex-grow">موقع تعريفي ورسمي لمسجد بيرستورب يعرض مواقيت الصلاة والفعاليات الإسلامية.</p>
+                        <!-- زر ثابت وسلس تماماً -->
+                        <a href="https://perstorp-moske.netlify.app/" target="_blank" class="mt-auto flex items-center justify-center w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-xl">
+                            <i class="fas fa-external-link-alt ml-2"></i> زيارة الموقع
                         </a>
                     </div>
                 </div>
 
-                <!-- الموقع الرابع -->
+                <!-- الموقع الرابع: العقارات -->
                 <div class="portfolio-card glass-panel rounded-2xl overflow-hidden shadow-md flex flex-col">
-                    <div class="relative h-48 overflow-hidden bg-gray-200">
-                        <img src="https://images.unsplash.com/photo-1560518846-ea0099bef864?q=80&w=600&auto=format&fit=crop" alt="أعمال شهاب طارق - للعقارات 2026" class="w-full h-full object-cover transition duration-500">
+                    <div class="relative w-full aspect-[4/3] overflow-hidden bg-gray-200">
+                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_500,q_auto,f_auto/v1777053977/nrleaa5sbfvklzeqhhar.jpg" alt="أعمال شهاب طارق - السوق وياك للعقارات" class="w-full h-full object-cover transition duration-500">
                         <div class="portfolio-overlay absolute inset-0 bg-blue-900 bg-opacity-80 flex items-center justify-center opacity-0 transition duration-300">
-                            <a href="https://real-estate2026.netlify.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold hover:bg-blue-50 transition transform hover:scale-105">
+                            <a href="https://real-estate2026.netlify.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold">
                                 <i class="fas fa-external-link-alt ml-2"></i>معاينة الموقع
                             </a>
                         </div>
                     </div>
                     <div class="p-5 flex-grow flex flex-col">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-bold text-gray-800">منصة العقارات 2026</h3>
+                            <h3 class="text-lg font-bold text-gray-800">السوق وياك للعقارات</h3>
                             <span class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded font-semibold">عقارات</span>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4 flex-grow">منصة حديثة ومتكاملة لعرض وتسويق العقارات وإدارة الأملاك بتصميم جذاب وسهل التصفح.</p>
-                        <a href="https://real-estate2026.netlify.app/" target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold text-sm mt-auto inline-flex items-center">
-                            <i class="fas fa-link ml-1"></i> رابط الموقع
+                        <p class="text-gray-600 text-sm mb-5 flex-grow">منصة حديثة ومتكاملة لعرض وتسويق العقارات وإدارة الأملاك بتصميم جذاب وسهل التصفح.</p>
+                        <!-- زر ثابت وسلس تماماً -->
+                        <a href="https://real-estate2026.netlify.app/" target="_blank" class="mt-auto flex items-center justify-center w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-xl">
+                            <i class="fas fa-external-link-alt ml-2"></i> زيارة الموقع
                         </a>
                     </div>
                 </div>
 
-                <!-- الموقع الخامس -->
+                <!-- الموقع الخامس: تسويق الملابس -->
                 <div class="portfolio-card glass-panel rounded-2xl overflow-hidden shadow-md flex flex-col">
-                    <div class="relative h-48 overflow-hidden bg-gray-200">
-                        <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=600&auto=format&fit=crop" alt="أعمال شهاب طارق - المناسبات" class="w-full h-full object-cover transition duration-500">
+                    <div class="relative w-full aspect-[4/3] overflow-hidden bg-gray-200">
+                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_500,q_auto,f_auto/v1777053969/ewo856wuumavsdcds9uw.jpg" alt="أعمال شهاب طارق - موقع تسويق الملابس" class="w-full h-full object-cover transition duration-500">
                         <div class="portfolio-overlay absolute inset-0 bg-blue-900 bg-opacity-80 flex items-center justify-center opacity-0 transition duration-300">
-                            <a href="https://occasions-nine.vercel.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold hover:bg-blue-50 transition transform hover:scale-105">
+                            <a href="https://occasions-nine.vercel.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold">
                                 <i class="fas fa-external-link-alt ml-2"></i>معاينة الموقع
                             </a>
                         </div>
                     </div>
                     <div class="p-5 flex-grow flex flex-col">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-bold text-gray-800">موقع المناسبات</h3>
-                            <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded font-semibold">فعاليات</span>
+                            <h3 class="text-lg font-bold text-gray-800">موقع تسويق الملابس</h3>
+                            <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded font-semibold">متجر إلكتروني</span>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4 flex-grow">موقع متخصص في تنظيم وعرض المناسبات والفعاليات (Occasions)، بتصميم يبرز البهجة.</p>
-                        <a href="https://occasions-nine.vercel.app/" target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold text-sm mt-auto inline-flex items-center">
-                            <i class="fas fa-link ml-1"></i> رابط الموقع
+                        <p class="text-gray-600 text-sm mb-5 flex-grow">متجر إلكتروني متخصص في عرض وتسويق الملابس والمناسبات بتصميم يبرز المنتجات باحترافية.</p>
+                        <!-- زر ثابت وسلس تماماً -->
+                        <a href="https://occasions-nine.vercel.app/" target="_blank" class="mt-auto flex items-center justify-center w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-xl">
+                            <i class="fas fa-external-link-alt ml-2"></i> زيارة الموقع
                         </a>
                     </div>
                 </div>
 
-                <!-- الموقع السادس -->
+                <!-- الموقع السادس: سنتر سمارت -->
                 <div class="portfolio-card glass-panel rounded-2xl overflow-hidden shadow-md flex flex-col">
-                    <div class="relative h-48 overflow-hidden bg-gray-200">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop" alt="أعمال شهاب طارق - المركز الذكي" class="w-full h-full object-cover transition duration-500">
+                    <div class="relative w-full aspect-[4/3] overflow-hidden bg-gray-200">
+                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_500,q_auto,f_auto/v1777053972/qwchcjqm19u0pp1gaqpy.jpg" alt="أعمال شهاب طارق - سنتر سمارت" class="w-full h-full object-cover transition duration-500">
                         <div class="portfolio-overlay absolute inset-0 bg-blue-900 bg-opacity-80 flex items-center justify-center opacity-0 transition duration-300">
-                            <a href="https://smart-center1.netlify.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold hover:bg-blue-50 transition transform hover:scale-105">
+                            <a href="https://smart-center1.netlify.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold">
                                 <i class="fas fa-external-link-alt ml-2"></i>معاينة الموقع
                             </a>
                         </div>
                     </div>
                     <div class="p-5 flex-grow flex flex-col">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-bold text-gray-800">المركز الذكي</h3>
+                            <h3 class="text-lg font-bold text-gray-800">سنتر سمارت</h3>
                             <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded font-semibold">شركات</span>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4 flex-grow">منصة (Smart Center) لعرض خدمات المركز الذكي والأنشطة التدريبية أو التجارية بشكل مؤسسي.</p>
-                        <a href="https://smart-center1.netlify.app/" target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold text-sm mt-auto inline-flex items-center">
-                            <i class="fas fa-link ml-1"></i> رابط الموقع
+                        <p class="text-gray-600 text-sm mb-5 flex-grow">منصة (Smart Center) لعرض خدمات المركز الذكي والأنشطة التدريبية أو التجارية بشكل مؤسسي.</p>
+                        <!-- زر ثابت وسلس تماماً -->
+                        <a href="https://smart-center1.netlify.app/" target="_blank" class="mt-auto flex items-center justify-center w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-xl">
+                            <i class="fas fa-external-link-alt ml-2"></i> زيارة الموقع
                         </a>
                     </div>
                 </div>
 
-                <!-- الموقع السابع -->
+                <!-- الموقع السابع: وظائف وخدمات -->
                 <div class="portfolio-card glass-panel rounded-2xl overflow-hidden shadow-md flex flex-col md:col-span-2 lg:col-span-1 lg:col-start-2">
-                    <div class="relative h-48 overflow-hidden bg-gray-200">
-                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=600&auto=format&fit=crop" alt="أعمال شهاب طارق - خدمات ووظائف" class="w-full h-full object-cover transition duration-500">
+                    <div class="relative w-full aspect-[4/3] overflow-hidden bg-gray-200">
+                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_500,q_auto,f_auto/v1777053975/fgtcwsg8heguqvtdvena.jpg" alt="أعمال شهاب طارق - وظائف وخدمات الشرقية" class="w-full h-full object-cover transition duration-500">
                         <div class="portfolio-overlay absolute inset-0 bg-blue-900 bg-opacity-80 flex items-center justify-center opacity-0 transition duration-300">
-                            <a href="https://services-and-jobs.netlify.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold hover:bg-blue-50 transition transform hover:scale-105">
+                            <a href="https://services-and-jobs.netlify.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold">
                                 <i class="fas fa-external-link-alt ml-2"></i>معاينة الموقع
                             </a>
                         </div>
                     </div>
                     <div class="p-5 flex-grow flex flex-col">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-bold text-gray-800">خدمات ووظائف</h3>
+                            <h3 class="text-lg font-bold text-gray-800">وظائف وخدمات الشرقية</h3>
                             <span class="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded font-semibold">منصة توظيف</span>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4 flex-grow">منصة متكاملة للربط بين أصحاب العمل والمستقلين، توفر عرض للخدمات المتنوعة وفرص العمل.</p>
-                        <a href="https://services-and-jobs.netlify.app/" target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold text-sm mt-auto inline-flex items-center">
-                            <i class="fas fa-link ml-1"></i> رابط الموقع
+                        <p class="text-gray-600 text-sm mb-5 flex-grow">منصة متكاملة للربط بين أصحاب العمل والمستقلين، توفر عرض للخدمات المتنوعة وفرص العمل.</p>
+                        <!-- زر ثابت وسلس تماماً -->
+                        <a href="https://services-and-jobs.netlify.app/" target="_blank" class="mt-auto flex items-center justify-center w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-xl">
+                            <i class="fas fa-external-link-alt ml-2"></i> زيارة الموقع
                         </a>
                     </div>
                 </div>
@@ -373,7 +377,7 @@
             </div>
         </section>
 
-        <!-- Location Section (تم حل مشكلة اللاج هنا) -->
+        <!-- Location Section -->
         <section class="glass-panel rounded-2xl p-6 md:p-8 shadow-md mb-12">
             <div class="flex items-center mb-6 border-b pb-4">
                 <i class="fas fa-map-marker-alt text-red-500 text-3xl ml-4"></i>
@@ -383,32 +387,29 @@
                 </div>
             </div>
 
-            <!-- حاوية الخريطة -->
-            <div class="relative w-full h-64 md:h-96 rounded-xl overflow-hidden shadow-inner border border-gray-200">
+            <div class="relative w-full h-64 md:h-96 rounded-xl overflow-hidden shadow-inner border border-gray-200 map-placeholder">
                 
-                <!-- الخريطة (تم تعطيل التفاعل الافتراضي pointer-events-none لمنع اللاج) -->
                 <iframe 
                     id="googleMap"
-                    src="https://maps.google.com/maps?q=شوبك%20بسطة,%20الزقازيق,%20الشرقية&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+                    data-src="https://maps.google.com/maps?q=شوبك%20بسطة,%20الزقازيق,%20الشرقية&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+                    src="" 
                     width="100%" 
                     height="100%" 
                     style="border:0;" 
                     allowfullscreen="" 
                     loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade"
-                    class="absolute inset-0 w-full h-full pointer-events-none transition-all duration-300">
+                    class="absolute inset-0 w-full h-full transition-all duration-300">
                 </iframe>
 
-                <!-- طبقة التفعيل (تظهر للمستخدم وتمنع الخريطة من سرقة الـ Scroll) -->
-                <div id="mapOverlay" class="absolute inset-0 bg-transparent flex items-center justify-center cursor-pointer group" onclick="activateMap()">
-                    <div class="map-interactive-btn text-blue-700 px-6 py-3 rounded-full font-bold shadow-lg border border-white/50 transition-transform transform group-hover:scale-105">
-                        <i class="fas fa-hand-pointer ml-2"></i> اضغط هنا للتفاعل مع الخريطة
+                <div id="mapOverlay" class="absolute inset-0 bg-white/40 backdrop-blur-sm flex items-center justify-center cursor-pointer group" onclick="activateMap()">
+                    <div class="bg-white text-blue-700 px-6 py-3 rounded-full font-bold shadow-lg border border-gray-200 flex items-center">
+                        <i class="fas fa-map-marked-alt text-xl ml-2"></i> اضغط هنا لعرض الخريطة
                     </div>
                 </div>
 
-                <!-- زر الفتح في التطبيق (موجود دائمًا في الأسفل) -->
-                <div class="absolute bottom-4 left-4 right-4 flex justify-center pointer-events-none">
-                    <a href="https://maps.app.goo.gl/oHozXucBK3VLZDkT8" target="_blank" class="bg-blue-600 text-white px-6 py-2 rounded-full shadow-lg font-bold hover:bg-blue-700 transition pointer-events-auto">
+                <div class="absolute bottom-4 left-4 right-4 flex justify-center pointer-events-none z-10">
+                    <a href="https://maps.app.goo.gl/oHozXucBK3VLZDkT8" target="_blank" class="bg-blue-600 text-white px-6 py-2 rounded-full shadow-lg font-bold pointer-events-auto">
                         <i class="fas fa-directions ml-2"></i> افتح في تطبيق خرائط جوجل
                     </a>
                 </div>
@@ -437,19 +438,16 @@
 
     <!-- Footer -->
     <footer class="bg-slate-900 text-white py-6 mt-auto text-center text-sm border-t-4 border-blue-600">
-        <p class="text-slate-300">جميع الحقوق محفوظة &copy; <span id="year"></span> شهاب طارق صلاح الدين</p>
+        <p class="text-slate-300">جميع الحقوق محفوظة © <span id="year"></span> شهاب طارق صلاح الدين</p>
         <p class="text-slate-500 mt-2 text-xs">تصميم وتطوير بواسطة شهاب طارق</p>
     </footer>
 
     <script>
-        // تحديث السنة التلقائي في الفوتر
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // دالة تفعيل الخريطة عند الضغط (لحل مشكلة اللاج)
         function activateMap() {
-            // إزالة الحماية من الخريطة لتصبح قابلة للتحريك
-            document.getElementById('googleMap').classList.remove('pointer-events-none');
-            // إخفاء زر التفعيل
+            var mapFrame = document.getElementById('googleMap');
+            mapFrame.src = mapFrame.getAttribute('data-src');
             document.getElementById('mapOverlay').style.display = 'none';
         }
     </script>
