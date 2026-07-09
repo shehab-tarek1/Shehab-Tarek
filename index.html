@@ -1,446 +1,524 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO Meta Tags - تحسين محركات البحث -->
-    <!-- تم تحسين العنوان ليشمل أهم الكلمات -->
+    <!-- SEO Meta Tags - تحسين محركات البحث المتقدم -->
     <title>شهاب طارق | شوبك بسطه</title>  
 
-    <link rel="icon" type="image/jpeg" href="favicon.jpg">
-    <link rel="shortcut icon" href="favicon.jpg">
-    <link rel="apple-touch-icon" href="favicon.jpg">
+    <link rel="icon" type="image/jpeg" href="https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775836472/rwwdvrpo2afmvktqd1da.jpg">
     <meta name="google-site-verification" content="XefzY43qDNb1CrV4OUGuqRGJcfpoR91lq930N53rXwc" />
 
-    <meta name="description" content="الموقع الرسمي لـ شهاب طارق صلاح الدين محمد السيد رمضان. محاسب ومصمم مواقع. شاهد معرض أعمال شهاب طارق في تصميم المواقع. طالب بكلية تجارة جامعة الزقازيق.">
-    <!-- تمت إضافة كل الكلمات التي طلبتها هنا -->
-    <meta name="keywords" content="شهاب طارق, شهاب طارق صلاح, شهاب طارق شوبك بسطه, شهاب طارق الزقازيق, شهاب الزقازيق, شهاب الشوبكي, شهاب الباش محاسب, شهاب طارق كلية تجارة الزقازيق, اعمال شهاب طارق, شوبك بسطه مركز الزقازيق الشرقية, الزقازيق, محاسب, مصمم مواقع, كورنيش شهاب طارق, تجارة الزقازيق, شهاب مصمم مواقع, عنوان شهاب طارق, رقم شهاب طارق, 01206244875, 01021974996, shehab_tarek1, Shehab Tarek Salah">
+    <meta name="description" content="الموقع الرسمي للمهندس شهاب طارق صلاح. مطور مواقع ويب متكاملة ومحاسب. متخصص في بناء المنصات التعليمية، المتاجر الإلكترونية، والمواقع الخدمية السريعة المرفوعة على Vercel.">
+    <meta name="keywords" content="شهاب طارق, مبرمج الزقازيق, مهندس برمجيات, مطور ويب, شهاب طارق صلاح, شهاب طارق شوبك بسطه, شهاب الزقازيق, شهاب الشوبكي, شهاب الباش محاسب, تصميم مواقع, Vercel, React, Frontend Developer, اعمال شهاب طارق, شوبك بسطه مركز الزقازيق الشرقية, محاسب ومبرمج, كورنيش شهاب طارق, تجارة الزقازيق, 01206244875, Shehab Tarek Salah">
     <meta name="author" content="شهاب طارق">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph (Facebook/WhatsApp Preview) -->
-    <meta property="og:title" content="شهاب طارق - محاسب ومصمم مواقع بالزقازيق">
-    <meta property="og:description" content="محاسب، ومصمم مواقع من شوبك بسطة، الزقازيق. تصفح أعمال شهاب طارق وتواصل معي الآن.">
+    <meta property="og:title" content="شهاب طارق | مطور تطبيقات ويب ومحاسب">
+    <meta property="og:description" content="تصفح معرض أعمال شهاب طارق في تطوير المواقع والمنصات التفاعلية المرفوعة على Vercel.">
     <meta property="og:image" content="https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775836472/rwwdvrpo2afmvktqd1da.jpg">
-    <meta property="og:type" content="profile">
+    <meta property="og:type" content="website">
 
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                            950: '#030712',
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 
-    <!-- Font Awesome -->
+    <!-- Font Awesome & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Three.js for Premium 3D Art -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-    <!-- Structured Data for Google (Schema.org) - التعديل الأهم لظهور صورتك واسمك -->
+    <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "شهاب طارق",
-      "givenName": "شهاب",
-      "familyName": "طارق",
-      "additionalName": "صلاح الدين محمد السيد رمضان",
-      "alternateName":[
-        "شهاب طارق صلاح", 
-        "شهاب الشوبكي", 
-        "شهاب الباش محاسب", 
-        "شهاب طارق شوبك بسطه",
-        "شهاب طارق الزقازيق",
-        "شهاب الزقازيق",
-        "شهاب طارق كلية تجارة الزقازيق",
-        "شهاب ابو رمضان", 
-        "Shehab Tarek", 
-        "Shehab Tarek Salah"
-      ],
-      "description": "شهاب طارق محاسب ومصمم مواقع، طالب بكلية تجارة جامعة الزقازيق، مقيم في شوبك بسطة.",
+      "jobTitle": ["Software Engineer", "Accountant"],
       "url": "https://www.facebook.com/share/1CWMh7BYxU/",
-      "image": {
-        "@type": "ImageObject",
-        "url": "https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775351048/djm9ursqqk7azfbxnuof.jpg",
-        "caption": "صورة شهاب طارق صلاح - محاسب ومبرمج من الزقازيق"
-      },
-      "jobTitle":["محاسب", "مبرمج", "مصمم مواقع"],
-      "affiliation": {
-        "@type": "Organization",
-        "name": "كلية تجارة جامعة الزقازيق"
-      },
+      "image": "https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775351048/djm9ursqqk7azfbxnuof.jpg",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "شوبك بسطه",
-        "addressLocality": "مركز الزقازيق",
+        "addressLocality": "الزقازيق",
         "addressRegion": "الشرقية",
         "addressCountry": "EG"
-      },
-      "telephone":["+201206244875", "+201021974996"],
-      "sameAs":[
-        "https://www.facebook.com/share/1CWMh7BYxU/",
-        "https://www.instagram.com/shehab_tarek1?igsh=c282OXltYXNuazc0"
-      ]
+      }
     }
     </script>
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4571728766637975"
-     crossorigin="anonymous"></script>
-
     <style>
-        body { font-family: 'Cairo', sans-serif; background-color: #f3f4f6; scroll-behavior: smooth; }
-
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            transform: translateZ(0); 
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #030712;
+            color: #f3f4f6;
+            overflow-x: hidden;
         }
 
-        .instagram-gradient {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        /* 3D Canvas Background container */
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.8;
+            pointer-events: none;
         }
 
-        @keyframes smooth-bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .animate-bounce-slow {
-            animation: smooth-bounce 3s ease-in-out infinite;
-            will-change: transform;
+        /* Subtle Grid Pattern Overlay */
+        .grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
         }
 
-        .map-placeholder {
-            background: #e5e7eb url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="%239ca3af" stroke-width="2"><path d="M30 20l40-10v60l-40 10zM10 30l20-10v60l-20 10zM70 10l20 10v60l-20-10z"/></svg>') center center no-repeat;
-            background-size: 50%;
+        /* Glassmorphism Premium Cards */
+        .premium-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .premium-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(14, 165, 233, 0.3);
+            box-shadow: 0 20px 40px -15px rgba(14, 165, 233, 0.15);
+        }
+
+        /* Custom soft radial glow */
+        .radial-glow {
+            background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.15) 0%, transparent 60%);
+        }
+
+        /* Active animations */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body class="text-gray-800 antialiased min-h-screen pb-12">
+<body class="antialiased selection:bg-brand-500 selection:text-white">
 
-    <!-- Header / Hero Section -->
-    <header class="relative bg-slate-900 text-white overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-slate-800 opacity-90"></div>
-        <div class="relative max-w-5xl mx-auto px-4 py-16 sm:py-24 flex flex-col items-center text-center">
+    <!-- Hero / Top Section -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden grid-pattern">
+        
+        <!-- Interactive 3D Canvas -->
+        <div id="canvas-container"></div>
 
-            <!-- Profile Image (No lazy load for Hero image to keep it fast) -->
-            <div class="relative w-40 h-56 sm:w-48 sm:h-64 rounded-3xl p-1 bg-white shadow-2xl mb-6 z-10 animate-bounce-slow">
-                <img src="https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775351048/djm9ursqqk7azfbxnuof.jpg" 
-                     alt="شهاب طارق صلاح - شهاب الزقازيق مصمم مواقع ومبرمج" 
-                     title="شهاب طارق كلية تجارة الزقازيق"
-                     class="w-full h-full object-cover object-center rounded-[1.3rem] border-4 border-slate-100">
+        <!-- Radial Ambient Glows -->
+        <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] radial-glow pointer-events-none -z-10"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] radial-glow pointer-events-none -z-10"></div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-6 py-24 text-center flex flex-col items-center">
+            
+            <!-- Sleek Avatar Container with premium border -->
+            <div class="relative mb-8 group">
+                <div class="absolute inset-0 bg-gradient-to-tr from-brand-500 to-indigo-500 rounded-[2.5rem] blur-xl opacity-40 group-hover:opacity-75 transition duration-500"></div>
+                <div class="relative w-40 h-52 rounded-[2rem] overflow-hidden border border-white/10 p-1.5 bg-brand-950">
+                    <img src="https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775351048/djm9ursqqk7azfbxnuof.jpg" 
+                         alt="شهاب طارق صلاح" 
+                         class="w-full h-full object-cover rounded-[1.7rem]">
+                </div>
             </div>
 
-            <!-- Titles -->
-            <h1 class="text-3xl sm:text-5xl font-bold mb-2">شهاب طارق</h1>
-            <p class="text-xl sm:text-2xl text-blue-300 font-semibold mb-4">محاسب | مصمم مواقع</p>
-            <p class="text-slate-300 max-w-2xl text-sm sm:text-base leading-relaxed mb-6">
-                شهاب طارق صلاح - طالب بكلية التجارة جامعة الزقازيق <br>
-                مصمم مواقع محترف يقدم خدمات محاسبية وتسويقية ضمن الأعمال الحرة الخاصة به 
+            <!-- Profession Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-brand-500 text-sm font-medium mb-6">
+                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                مطور مواقع ويب 
+            </div>
+
+            <!-- Main Premium Title -->
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6">
+                شهاب طارق
+            </h1>
+
+            <p class="text-xl sm:text-2xl text-slate-300 font-medium mb-8 max-w-2xl leading-relaxed">
+                 مواقع ويب بتصميمات حديثه  <span class="text-transparent bg-clip-text bg-gradient-to-l from-brand-100 to-brand-500 font-bold">باسعار مميزة </span> فرصتك للظهور.
             </p>
 
-            <a href="#portfolio" class="mt-2 bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg">
-                شاهد أعمالي
-            </a>
-        </div>
+            <p class="text-slate-400 max-w-xl text-sm sm:text-base mb-12 leading-relaxed">
+                طالب بكلية التجارة جامعة الزقازيق ومطور  مستقل. يركز على جودة الأكواد، دقة الواجهات، وسرعة الأداء بالاعتماد على أحدث البنى التحتية السحابية.
+            </p>
 
-        <!-- Wave shape divider -->
-        <div class="absolute bottom-0 w-full overflow-hidden leading-none">
-            <svg class="relative block w-full h-12 sm:h-16" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118,130.42,120.3,195.4,109.28Z" fill="#f3f4f6"></path>
-            </svg>
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                <a href="#portfolio" class="px-8 py-4 bg-white text-brand-950 hover:bg-brand-50 transition-colors rounded-xl font-bold shadow-lg shadow-white/5 flex items-center justify-center gap-2">
+                    نماذج الاعمال السابقة
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <a href="#contact" class="px-8 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20 transition-all rounded-xl font-medium flex items-center justify-center gap-2">
+                    للتواصل
+                </a>
+            </div>
+
         </div>
     </header>
 
-    <main class="max-w-5xl mx-auto px-4 mt-8 relative z-20">
-
-        <!-- Contact & Actions Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-
-            <!-- WhatsApp Contact Card -->
-            <div class="glass-panel rounded-2xl p-6 shadow-md text-center">
-                <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
-                    <i class="fab fa-whatsapp"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-4">تواصل عبر واتساب</h3>
-                <div class="space-y-3">
-                    <a href="https://wa.me/201206244875" target="_blank" class="block w-full py-3 px-4 bg-green-500 text-white font-semibold rounded-lg">
-                        <i class="fab fa-whatsapp mr-2"></i> 01206244875
-                    </a>
-                    <a href="https://wa.me/201021974996" target="_blank" class="block w-full py-3 px-4 bg-green-500 text-white font-semibold rounded-lg">
-                        <i class="fab fa-whatsapp mr-2"></i> 01021974996
-                    </a>
-                </div>
-            </div>
-
-            <!-- Social Media Previews -->
-            <div class="space-y-6">
-
-                <!-- Facebook Mock Preview -->
-                <a href="https://www.facebook.com/share/1CWMh7BYxU/" target="_blank" class="block glass-panel rounded-2xl p-5 shadow-sm border-l-4 border-blue-600">
-                    <div class="flex items-center justify-between mb-3">
-                        <div class="flex items-center space-x-3 space-x-reverse">
-                            <img src="https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775836472/rwwdvrpo2afmvktqd1da.jpg" alt="Shehab Tarek Salah" loading="lazy" class="w-12 h-12 rounded-full border border-gray-200 object-cover object-top">
-                            <div>
-                                <h4 class="font-bold text-gray-900">Shehab Tarek Salah</h4>
-                                <p class="text-xs text-gray-500 flex items-center"><i class="fas fa-globe-americas ml-1"></i> حساب فيسبوك</p>
-                            </div>
-                        </div>
-                        <i class="fab fa-facebook text-blue-600 text-3xl"></i>
-                    </div>
-                    <div class="bg-blue-50 text-blue-700 py-2 rounded text-center font-semibold mt-2 text-sm">
-                        <i class="fas fa-external-link-alt ml-1"></i> عرض الحساب أو التواصل عبر فيسبوك
-                    </div>
-                </a>
-
-                <!-- Instagram Mock Preview -->
-                <a href="https://www.instagram.com/shehab_tarek1?igsh=c282OXltYXNuazc0" target="_blank" class="block glass-panel rounded-2xl p-5 shadow-sm instagram-gradient text-white">
-                    <div class="flex items-center justify-between mb-3">
-                        <div class="flex items-center space-x-3 space-x-reverse">
-                            <div class="p-0.5 bg-white rounded-full">
-                                <img src="https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775836472/rwwdvrpo2afmvktqd1da.jpg" alt="Shehab Tarek" loading="lazy" class="w-12 h-12 rounded-full object-cover object-top">
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg">shehab_tarek1</h4>
-                                <p class="text-xs opacity-90">Shehab Tarel</p>
-                            </div>
-                        </div>
-                        <i class="fab fa-instagram text-4xl opacity-80"></i>
-                    </div>
-                    <div class="bg-white/20 py-2 rounded text-center font-semibold mt-2 text-sm">
-                        <i class="fas fa-camera ml-1"></i> متابعة على إنستجرام
-                    </div>
-                </a>
-
-            </div>
-        </div>
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-6 relative z-10 pb-24">
 
         <!-- ========================================== -->
-        <!-- قسم معرض الأعمال -->
+        <!-- قسم المشاريع المحدثة لـ Vercel -->
         <!-- ========================================== -->
-        <section id="portfolio" class="mb-16 pt-8">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4">
-                    معرض <span class="text-blue-600">أعمال شهاب طارق</span>
+        <section id="portfolio" class="py-24">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">
+                    اعمالي السابقة
                 </h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    بصفتي <strong>شهاب طارق</strong> (مصمم مواقع ومبرمج)، أقدم لكم في هذا المعرض مجموعة من أبرز <strong>أعمال شهاب طارق</strong> في تصميم وتطوير مواقع الويب الاحترافية في مجالات متعددة.
+                <div class="h-1 w-20 bg-brand-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
+                    مجموعة من المنصات التفاعلية المخصصة التي قمت بتطويرها بالكامل واستضافتها بنجاح على سيرفرات سحابية لضمان أقصى كفاءة للمستخدمين بمصر والوطن العربي.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                <!-- الموقع الأول: كلية التجارة -->
-                <div class="portfolio-card glass-panel rounded-2xl overflow-hidden shadow-md flex flex-col">
-                    <div class="relative w-full aspect-[4/3] overflow-hidden bg-gray-200">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_500,q_auto,f_auto/v1777053979/db2pwzzdnakgowp9tx7u.jpg" alt="أعمال شهاب طارق - موقع كلية التجارة" loading="lazy" class="w-full h-full object-cover">
-                        <div class="portfolio-overlay absolute inset-0 bg-blue-900 bg-opacity-80 flex items-center justify-center opacity-0 transition duration-300">
-                            <a href="https://faculty-of-commerce.netlify.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold">
-                                <i class="fas fa-external-link-alt ml-2"></i>معاينة الموقع
-                            </a>
+                <!-- 1. خدمات كلية تجارة -->
+                <article class="premium-card rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
+                    <div class="relative aspect-video overflow-hidden bg-slate-900 border-b border-white/5">
+                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_500,q_auto,f_auto/v1777053979/db2pwzzdnakgowp9tx7u.jpg" alt="خدمات كلية تجارة الزقازيق" class="w-full h-full object-cover opacity-85 hover:opacity-100 transition-opacity duration-300">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-lg font-bold text-white">بوابة خدمات كلية التجارة</h3>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-brand-500/10 text-brand-500 border border-brand-500/20">جامعي</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow">منصة تفاعلية تخدم طلاب كلية التجارة بجامعة الزقازيق، تتيح تصفح الجداول والمحاضرات بسلاسة فائقة.</p>
+                        <a href="https://faculty-of-commerce.vercel.app/" target="_blank" class="mt-auto w-full py-3 bg-white/5 hover:bg-brand-500 hover:text-white text-slate-300 border border-white/10 hover:border-brand-500 text-center rounded-xl transition-all font-medium flex items-center justify-center gap-2 text-sm">
+                            زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 2. مسجد الرحمن -->
+                <article class="premium-card rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
+                    <div class="relative aspect-video overflow-hidden bg-slate-900 border-b border-white/5">
+                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_500,q_auto,f_auto/v1777053974/burcenkiplmzhevq730f.jpg" alt="مسجد الرحمن" class="w-full h-full object-cover opacity-85 hover:opacity-100 transition-opacity duration-300">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-lg font-bold text-white">موقع مسجد الرحمن</h3>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">منصة إسلامية</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow">تطبيق ويب خدمي مخصص لمواقيت الصلاة، الأخبار الأسبوعية، والفعاليات الثقافية لمجتمع مسجد الرحمن بـ Perstorp.</p>
+                        <a href="https://mosk-staden-perstorp.vercel.app/" target="_blank" class="mt-auto w-full py-3 bg-white/5 hover:bg-brand-500 hover:text-white text-slate-300 border border-white/10 hover:border-brand-500 text-center rounded-xl transition-all font-medium flex items-center justify-center gap-2 text-sm">
+                            زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 3. وظائف وخدمات الشرقية -->
+                <article class="premium-card rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
+                    <div class="relative aspect-video overflow-hidden bg-slate-900 border-b border-white/5">
+                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_500,q_auto,f_auto/v1777053975/fgtcwsg8heguqvtdvena.jpg" alt="وظائف وخدمات الشرقية" class="w-full h-full object-cover opacity-85 hover:opacity-100 transition-opacity duration-300">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-lg font-bold text-white">وظائف وخدمات الشرقية</h3>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20">منصة وظائف</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow">منصة متكاملة تربط أصحاب الأعمال بالمستقلين والباحثين عن العمل على مستوى محافظة الشرقية.</p>
+                        <a href="https://sharqiya.vercel.app/" target="_blank" class="mt-auto w-full py-3 bg-white/5 hover:bg-brand-500 hover:text-white text-slate-300 border border-white/10 hover:border-brand-500 text-center rounded-xl transition-all font-medium flex items-center justify-center gap-2 text-sm">
+                            زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 4. السوق وياك للعقارات -->
+                <article class="premium-card rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
+                    <div class="relative aspect-video overflow-hidden bg-slate-900 border-b border-white/5">
+                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_500,q_auto,f_auto/v1777053977/nrleaa5sbfvklzeqhhar.jpg" alt="السوق وياك للعقارات" class="w-full h-full object-cover opacity-85 hover:opacity-100 transition-opacity duration-300">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-lg font-bold text-white">السوق وياك العقاري</h3>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">تسويق عقاري</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow">تطبيق ويب متقدم لعرض وتقييم العقارات والوحدات السكنية مع نظام تصفية وبحث ذكي للمستخدمين.</p>
+                        <a href="https://real-estate-nine-kohl.vercel.app/" target="_blank" class="mt-auto w-full py-3 bg-white/5 hover:bg-brand-500 hover:text-white text-slate-300 border border-white/10 hover:border-brand-500 text-center rounded-xl transition-all font-medium flex items-center justify-center gap-2 text-sm">
+                            زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 5. جامعه ستور -->
+                <article class="premium-card rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
+                    <div class="relative aspect-video overflow-hidden bg-slate-900 border-b border-white/5">
+                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_500,q_auto,f_auto/v1777053969/ewo856wuumavsdcds9uw.jpg" alt="جامعه ستور" class="w-full h-full object-cover opacity-85 hover:opacity-100 transition-opacity duration-300">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-lg font-bold text-white">جامعة ستور للتسويق</h3>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/20">متجر إلكتروني</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow">متجر تسويقي حديث مبسط ومحسن للتوافق مع شاشات الهواتف المحمولة وتسهيل عمليات البيع والطلب المباشر.</p>
+                        <a href="https://gam3a-store.vercel.app/" target="_blank" class="mt-auto w-full py-3 bg-white/5 hover:bg-brand-500 hover:text-white text-slate-300 border border-white/10 hover:border-brand-500 text-center rounded-xl transition-all font-medium flex items-center justify-center gap-2 text-sm">
+                            زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 6. منصة الثانوية العامه -->
+                <article class="premium-card rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
+                    <div class="relative aspect-video overflow-hidden bg-slate-900 border-b border-white/5">
+                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_500,q_auto,f_auto/v1777053972/qwchcjqm19u0pp1gaqpy.jpg" alt="منصة الثانوية العامة" class="w-full h-full object-cover opacity-85 hover:opacity-100 transition-opacity duration-300">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-lg font-bold text-white">منصة روز التعليمية</h3>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">منصة تعليمية</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow">نظام تعليمي متكامل للثانوية العامة يعتمد على عرض المحاضرات والتقارير والاختبارات التفاعلية أونلاين.</p>
+                        <a href="https://natega-rose.vercel.app/" target="_blank" class="mt-auto w-full py-3 bg-white/5 hover:bg-brand-500 hover:text-white text-slate-300 border border-white/10 hover:border-brand-500 text-center rounded-xl transition-all font-medium flex items-center justify-center gap-2 text-sm">
+                            زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- قسم تواصل وموقع المقر -->
+        <!-- ========================================== -->
+        <section id="contact" class="py-12 border-t border-white/5">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Contact Details Card -->
+                <div class="premium-card rounded-3xl p-8 reveal-on-scroll">
+                    <h3 class="text-2xl font-bold mb-2 text-white">استلم موقعك باقل سعر مع صيانة مجانية </h3>
+                    <p class="text-slate-400 text-sm mb-8 leading-relaxed">طرق التواصل </p>
+
+                    <div class="space-y-4">
+                        <a href="https://wa.me/201206244875" target="_blank" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-brand-500/10 border border-white/5 hover:border-brand-500/20 transition-all group">
+                            <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center text-green-400 text-xl group-hover:scale-110 transition-transform">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-500 block">واتساب (الأساسي)</span>
+                                <span class="font-bold text-white text-sm sm:text-base">01206244875</span>
+                            </div>
+                        </a>
+
+                        <a href="https://wa.me/201021974996" target="_blank" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-brand-500/10 border border-white/5 hover:border-brand-500/20 transition-all group">
+                            <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center text-green-400 text-xl group-hover:scale-110 transition-transform">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-500 block">واتساب (الاحتياطي)</span>
+                                <span class="font-bold text-white text-sm sm:text-base">01021974996</span>
+                            </div>
+                        </a>
+
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
+                            <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 text-xl">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-500 block">الموقع الميداني والمقر</span>
+                                <span class="font-bold text-white text-sm sm:text-base">كورنيش شهاب طارق، شوبك بسطة، الزقازيق، الشرقية</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="p-5 flex-grow flex flex-col">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-bold text-gray-800">خدمات كلية تجارة الزقازيق</h3>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded font-semibold">تعليمي</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-5 flex-grow"> موقع تعريفي وخدمي لكلية التجارة، يعرض أحدث الخدمات الطلابية بشكل عصري.</p>
-                        <a href="https://faculty-of-commerce.netlify.app/" target="_blank" class="mt-auto flex items-center justify-center w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-xl">
-                            <i class="fas fa-external-link-alt ml-2"></i> زيارة الموقع
+
+                    <!-- Social Icons inside card -->
+                    <div class="flex gap-4 mt-8 pt-6 border-t border-white/5 justify-center">
+                        <a href="https://www.facebook.com/share/1CWMh7BYxU/" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-blue-600 hover:text-white flex items-center justify-center text-slate-400 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/shehab_tarek1" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-pink-600 hover:text-white flex items-center justify-center text-slate-400 transition-colors">
+                            <i class="fab fa-instagram"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- الموقع الثاني: كلية التجارة -->
-                <div class="portfolio-card glass-panel rounded-2xl overflow-hidden shadow-md flex flex-col">
-                    <div class="relative w-full aspect-[4/3] overflow-hidden bg-gray-200">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_500,q_auto,f_auto/v1777053970/f26v32ke81rki5oakitk.jpg" alt="أعمال شهاب طارق - منصة كلية التجارة 2026" loading="lazy" class="w-full h-full object-cover">
-                        <div class="portfolio-overlay absolute inset-0 bg-blue-900 bg-opacity-80 flex items-center justify-center opacity-0 transition duration-300">
-                            <a href="https://faculty-of-commerce-2026.web.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold">
-                                <i class="fas fa-external-link-alt ml-2"></i>معاينة الموقع
+                <!-- Sleek Map Presentation -->
+                <div class="premium-card rounded-3xl p-6 reveal-on-scroll">
+                    <div class="relative w-full aspect-square rounded-2xl overflow-hidden border border-white/10">
+                        <!-- Pexels Map Representation overlayed with map direct actions -->
+                        <img src="https://images.pexels.com/photos/378570/pexels-photo-378570.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                             alt="خريطة موقع شوبك بسطة - الزقازيق" 
+                             class="absolute inset-0 w-full h-full object-cover filter brightness-50">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-950 to-transparent opacity-60"></div>
+                        <div class="absolute inset-0 flex flex-col justify-end p-6 text-center">
+                            <h4 class="font-bold text-xl text-white mb-2">كورنيش شهاب طارق</h4>
+                            <p class="text-xs text-slate-300 mb-6">شوبك بسطة، مركز الزقازيق، محافظة الشرقية</p>
+                            <a href="https://maps.app.goo.gl/oHozXucBK3VLZDkT8" target="_blank" class="w-full py-3 bg-brand-500 hover:bg-brand-600 text-white font-bold rounded-xl shadow-lg shadow-brand-500/20 transition-colors flex items-center justify-center gap-2">
+                                <i class="fas fa-directions"></i> الاتجاهات في خرائط جوجل
                             </a>
                         </div>
-                    </div>
-                    <div class="p-5 flex-grow flex flex-col">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-bold text-gray-800">منصة كلية تجارة الزقازيق</h3>
-                            <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded font-semibold">تطبيق ويب</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-5 flex-grow">نسخة مطورة ومحدثة (2026) لمنصة كلية التجارة مع واجهة مستخدم متقدمة وتجربة استخدام سلسة.</p>
-                        <a href="https://faculty-of-commerce-2026.web.app/" target="_blank" class="mt-auto flex items-center justify-center w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-xl">
-                            <i class="fas fa-external-link-alt ml-2"></i> زيارة الموقع
-                        </a>
-                    </div>
-                </div>
-
-                <!-- الموقع الثالث: المسجد -->
-                <div class="portfolio-card glass-panel rounded-2xl overflow-hidden shadow-md flex flex-col">
-                    <div class="relative w-full aspect-[4/3] overflow-hidden bg-gray-200">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_500,q_auto,f_auto/v1777053974/burcenkiplmzhevq730f.jpg" alt="أعمال شهاب طارق - موقع المسجد" loading="lazy" class="w-full h-full object-cover">
-                        <div class="portfolio-overlay absolute inset-0 bg-blue-900 bg-opacity-80 flex items-center justify-center opacity-0 transition duration-300">
-                            <a href="https://perstorp-moske.netlify.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold">
-                                <i class="fas fa-external-link-alt ml-2"></i>معاينة الموقع
-                            </a>
-                        </div>
-                    </div>
-                    <div class="p-5 flex-grow flex flex-col">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-bold text-gray-800">مسجد بيرستورب</h3>
-                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">إسلامي</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-5 flex-grow">موقع تعريفي ورسمي لمسجد بيرستورب يعرض مواقيت الصلاة والفعاليات الإسلامية.</p>
-                        <a href="https://perstorp-moske.netlify.app/" target="_blank" class="mt-auto flex items-center justify-center w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-xl">
-                            <i class="fas fa-external-link-alt ml-2"></i> زيارة الموقع
-                        </a>
-                    </div>
-                </div>
-
-                <!-- الموقع الرابع: العقارات -->
-                <div class="portfolio-card glass-panel rounded-2xl overflow-hidden shadow-md flex flex-col">
-                    <div class="relative w-full aspect-[4/3] overflow-hidden bg-gray-200">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_500,q_auto,f_auto/v1777053977/nrleaa5sbfvklzeqhhar.jpg" alt="أعمال شهاب طارق - السوق وياك للعقارات" loading="lazy" class="w-full h-full object-cover">
-                        <div class="portfolio-overlay absolute inset-0 bg-blue-900 bg-opacity-80 flex items-center justify-center opacity-0 transition duration-300">
-                            <a href="https://real-estate2026.netlify.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold">
-                                <i class="fas fa-external-link-alt ml-2"></i>معاينة الموقع
-                            </a>
-                        </div>
-                    </div>
-                    <div class="p-5 flex-grow flex flex-col">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-bold text-gray-800">السوق وياك للعقارات</h3>
-                            <span class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded font-semibold">عقارات</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-5 flex-grow">منصة حديثة ومتكاملة لعرض وتسويق العقارات وإدارة الأملاك بتصميم جذاب وسهل التصفح.</p>
-                        <a href="https://real-estate2026.netlify.app/" target="_blank" class="mt-auto flex items-center justify-center w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-xl">
-                            <i class="fas fa-external-link-alt ml-2"></i> زيارة الموقع
-                        </a>
-                    </div>
-                </div>
-
-                <!-- الموقع الخامس: تسويق الملابس -->
-                <div class="portfolio-card glass-panel rounded-2xl overflow-hidden shadow-md flex flex-col">
-                    <div class="relative w-full aspect-[4/3] overflow-hidden bg-gray-200">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_500,q_auto,f_auto/v1777053969/ewo856wuumavsdcds9uw.jpg" alt="أعمال شهاب طارق - موقع تسويق الملابس" loading="lazy" class="w-full h-full object-cover">
-                        <div class="portfolio-overlay absolute inset-0 bg-blue-900 bg-opacity-80 flex items-center justify-center opacity-0 transition duration-300">
-                            <a href="https://occasions-nine.vercel.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold">
-                                <i class="fas fa-external-link-alt ml-2"></i>معاينة الموقع
-                            </a>
-                        </div>
-                    </div>
-                    <div class="p-5 flex-grow flex flex-col">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-bold text-gray-800">موقع تسويق الملابس</h3>
-                            <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded font-semibold">متجر إلكتروني</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-5 flex-grow">متجر إلكتروني متخصص في عرض وتسويق الملابس والمنتجات</p>
-                        <a href="https://occasions-nine.vercel.app/" target="_blank" class="mt-auto flex items-center justify-center w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-xl">
-                            <i class="fas fa-external-link-alt ml-2"></i> زيارة الموقع
-                        </a>
-                    </div>
-                </div>
-
-                <!-- الموقع السادس: سنتر سمارت -->
-                <div class="portfolio-card glass-panel rounded-2xl overflow-hidden shadow-md flex flex-col">
-                    <div class="relative w-full aspect-[4/3] overflow-hidden bg-gray-200">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_500,q_auto,f_auto/v1777053972/qwchcjqm19u0pp1gaqpy.jpg" alt="أعمال شهاب طارق - سنتر سمارت" loading="lazy" class="w-full h-full object-cover">
-                        <div class="portfolio-overlay absolute inset-0 bg-blue-900 bg-opacity-80 flex items-center justify-center opacity-0 transition duration-300">
-                            <a href="https://smart-center1.netlify.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold">
-                                <i class="fas fa-external-link-alt ml-2"></i>معاينة الموقع
-                            </a>
-                        </div>
-                    </div>
-                    <div class="p-5 flex-grow flex flex-col">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-bold text-gray-800">سنتر سمارت</h3>
-                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded font-semibold">تعليمي خاص</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-5 flex-grow">منصة (Smart Center) لادارة السناتر التعليمية ومتابعة حالة الطلاب وارسال التقارير لاولياء الامور</p>
-                        <a href="https://smart-center1.netlify.app/" target="_blank" class="mt-auto flex items-center justify-center w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-xl">
-                            <i class="fas fa-external-link-alt ml-2"></i> زيارة الموقع
-                        </a>
-                    </div>
-                </div>
-
-                <!-- الموقع السابع: وظائف وخدمات -->
-                <div class="portfolio-card glass-panel rounded-2xl overflow-hidden shadow-md flex flex-col md:col-span-2 lg:col-span-1 lg:col-start-2">
-                    <div class="relative w-full aspect-[4/3] overflow-hidden bg-gray-200">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_500,q_auto,f_auto/v1777053975/fgtcwsg8heguqvtdvena.jpg" alt="أعمال شهاب طارق - وظائف وخدمات الشرقية" loading="lazy" class="w-full h-full object-cover">
-                        <div class="portfolio-overlay absolute inset-0 bg-blue-900 bg-opacity-80 flex items-center justify-center opacity-0 transition duration-300">
-                            <a href="https://services-and-jobs.netlify.app/" target="_blank" class="bg-white text-blue-600 px-5 py-2 rounded-lg font-bold">
-                                <i class="fas fa-external-link-alt ml-2"></i>معاينة الموقع
-                            </a>
-                        </div>
-                    </div>
-                    <div class="p-5 flex-grow flex flex-col">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-bold text-gray-800">وظائف وخدمات الشرقية</h3>
-                            <span class="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded font-semibold">منصة توظيف</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-5 flex-grow">منصة متكاملة للربط بين أصحاب العمل والمستقلين، توفر عرض للخدمات المتنوعة وفرص عمل للطلاب </p>
-                        <a href="https://services-and-jobs.netlify.app/" target="_blank" class="mt-auto flex items-center justify-center w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-xl">
-                            <i class="fas fa-external-link-alt ml-2"></i> زيارة الموقع
-                        </a>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- Location Section -->
-        <section class="glass-panel rounded-2xl p-6 md:p-8 shadow-md mb-12">
-            <div class="flex items-center mb-6 border-b pb-4">
-                <i class="fas fa-map-marker-alt text-red-500 text-3xl ml-4"></i>
-                <div>
-                    <h2 class="text-2xl font-bold text-gray-800">عنوان شهاب طارق</h2>
-                    <p class="text-gray-600">شوبك بسطة - مركز الزقازيق - محافظة الشرقية</p>
-                </div>
+        <!-- Dynamic SEO Article (Integrated Context) -->
+        <section class="premium-card rounded-3xl p-8 md:p-12 mt-12 reveal-on-scroll">
+            <h3 class="text-2xl font-bold text-white mb-4 border-r-4 border-brand-500 pr-4">من هو شهاب طارق صلاح؟</h3>
+            <div class="text-slate-300 space-y-4 text-sm sm:text-base leading-relaxed">
+                <p>
+                    <strong>شهاب طارق صلاح الدين محمد السيد رمضان</strong>، والمعروف رقمياً بلقب <strong>شهاب طارق</strong>، هو مطور ويب ومبرمج واجهات تفاعلية وكاتب حسابات متميز. يجمع بين العقلية التحليلية لدراسته الأكاديمية في <strong>كلية تجارة الزقازيق</strong> وبين الشغف البرمجي المتطور.
+                </p>
+                <p>
+                    اشتهر <strong>شهاب طارق في شوبك بسطة</strong> بمحافظة الشرقية بتقديم خدمات برمجية دقيقة وحلول ويب متطورة (<strong>شهاب مصمم مواقع</strong>). بفضل تحسيناته الأخيرة، يقدم أعمالاً مبرمجة بالكامل ومستضافة على شبكة <strong>Vercel</strong> لسرعة وثبات فائق للأنظمة والمتاجر كـ <strong>جامعة ستور</strong> ومنصات التقييم مثل <strong>منصة الثانوية العامة</strong> وبوابات المساجد والخدمات الطلابية لجامعة الزقازيق.
+                </p>
             </div>
-
-            <div class="relative w-full h-64 md:h-96 rounded-xl overflow-hidden shadow-inner border border-gray-200 map-placeholder">
-
-                <!-- صورة الخريطة من Pexels مع التحميل الكسول -->
-                <img 
-                    src="https://images.pexels.com/photos/378570/pexels-photo-378570.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-                    alt="خريطة موقع شوبك بسطة - الزقازيق" 
-                    loading="lazy"
-                    class="absolute inset-0 w-full h-full object-cover z-0 opacity-90 hover:opacity-100 transition duration-300"
-                >
-
-                <div class="absolute bottom-4 left-4 right-4 flex justify-center z-10">
-                    <a href="https://maps.app.goo.gl/oHozXucBK3VLZDkT8" target="_blank" class="bg-blue-600 text-white px-6 py-2 rounded-full shadow-lg font-bold">
-                        <i class="fas fa-directions ml-2"></i> افتح في تطبيق خرائط جوجل
-                    </a>
-                </div>
-            </div>
-
-            <p class="text-center text-sm text-gray-500 mt-4">
-                <i class="fas fa-info-circle ml-1"></i> كورنيش شهاب طارق، شوبك بسطه، مركز الزقازيق
-            </p>
-        </section>
-
-        <!-- SEO Keyword Rich Section -->
-        <section class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 text-sm md:text-base text-gray-700 leading-relaxed mb-8">
-            <h3 class="text-lg font-bold text-slate-800 mb-3 border-r-4 border-blue-500 pr-3">من هو شهاب طارق صلاح؟</h3>
-             <p class="mb-3">   
-                <strong>شهاب طارق صلاح الدين محمد السيد رمضان</strong>، والمعروف أيضاً بـ <strong>شهاب طارق صلاح</strong> أو <strong>شهاب الشوبكي</strong> و <strong>شهاب الباش محاسب</strong>، هو <a href="#" class="text-blue-600 hover:underline">كاتب حسابات</a> و <a href="#" class="text-blue-600 hover:underline">رائد اعمال حرة</a> و <a href="#" class="text-blue-600 hover:underline">مصمم مواقع</a> محترف. 
-            </p>
-            <p class="mb-3">
-                يُلقب بـ <strong>شهاب طارق</strong>، وهو <strong>طالب بكلية التجارة جامعة الزقازيق</strong> (<strong>تجارة الزقازيق</strong>). يجمع بين دراسته المحاسبية وبين الإبداع التقني كـ <strong>شهاب مصمم مواقع</strong>، ويمكنك الاطلاع على <strong>أعمال شهاب طارق</strong> في قسم معرض الأعمال المرفق بالأعلى.
-            </p>
-            <p>
-                يقيم <strong>شهاب طارق في شوبك بسطه</strong> (<strong>مركز الزقازيق الشرقية</strong>) بالقرب من منطقة <strong>كورنيش شهاب طارق</strong>. إذا كنت تبحث عن <strong>شهاب طارق الزقازيق</strong> أو <strong>شهاب الزقازيق</strong> بشكل عام، يمكنك الوصول إلى <strong>عنوان شهاب طارق</strong> عبر الخريطة المرفقة أعلاه للوصول المباشر إلى الموقع في الزقازيق بمحافظة الشرقية.
-            </p>
         </section>
 
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-6 mt-auto text-center text-sm border-t-4 border-blue-600">
-        <p class="text-slate-300">جميع الحقوق محفوظة © <span id="year"></span> شهاب طارق صلاح</p>
-        <p class="text-slate-500 mt-2 text-xs">تصميم وتطوير بواسطة شهاب طارق</p>
+    <footer class="bg-brand-950/80 border-t border-white/5 py-12 text-center text-sm text-slate-500 relative z-20">
+        <p class="mb-2">صُمم وطُوّر بواسطة شهاب طارق صلاح</p>
+        <p class="text-xs text-slate-600">جميع الحقوق محفوظة © <span id="year"></span> | استضافة فائقة السرعة عبر Vercel</p>
     </footer>
 
+    <!-- Three.js Visual and Core Script -->
     <script>
+        // Set dynamic year
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 3D Scene Initialization
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        
+        // Dark atmosphere camera
+        const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 100);
+        camera.position.z = 5;
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // Ambient and Directional Premium Lights
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+        scene.add(ambientLight);
+
+        const pointLight = new THREE.PointLight(0x0ea5e9, 2, 50); // Sky Cyan Light
+        pointLight.position.set(5, 5, 5);
+        scene.add(pointLight);
+
+        const purpleLight = new THREE.PointLight(0x6366f1, 1.5, 50); // Indigo Light
+        purpleLight.position.set(-5, -5, 5);
+        scene.add(purpleLight);
+
+        // Create an elegant, premium 3D Mesh (Torus Knot)
+        const geometry = new THREE.TorusKnotGeometry(1.2, 0.4, 120, 16);
+        const material = new THREE.MeshPhysicalMaterial({
+            color: 0x0ea5e9,
+            roughness: 0.1,
+            metalness: 0.8,
+            clearcoat: 1.0,
+            clearcoatRoughness: 0.1,
+            wireframe: true // Mesh Grid style for modern developer aesthetic
+        });
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+        // Interaction coordinates
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX - window.innerWidth / 2) / 100;
+            mouseY = (e.clientY - window.innerHeight / 2) / 100;
+        });
+
+        // Touch event compatibility for mobile devices
+        document.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                mouseX = (e.touches[0].clientX - window.innerWidth / 2) / 100;
+                mouseY = (e.touches[0].clientY - window.innerHeight / 2) / 100;
+            }
+        });
+
+        // Animation Loop
+        const clock = new THREE.Clock();
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const delta = clock.getDelta();
+            const time = clock.getElapsedTime();
+
+            // Smooth rotation
+            mesh.rotation.x = time * 0.15;
+            mesh.rotation.y = time * 0.2;
+
+            // Fluid responsive movement towards cursor coordinates
+            targetX += (mouseX - targetX) * 0.05;
+            targetY += (mouseY - targetY) * 0.05;
+
+            mesh.position.x = targetX * 0.5;
+            mesh.position.y = -targetY * 0.5;
+
+            renderer.render(scene, camera);
+        }
+
+        // Start animation once document and window loaded
+        window.onload = function () {
+            animate();
+        };
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+
+        // Scroll animations reveal trigger
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal-on-scroll');
+            reveals.forEach((element) => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const visibleDistance = 100;
+                if (elementTop < windowHeight - visibleDistance) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Trigger instantly
     </script>
 </body>
 </html>
