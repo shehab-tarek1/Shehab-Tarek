@@ -8,6 +8,8 @@
     <title>شهاب طارق | شوبك بسطه</title>  
 
     <link rel="icon" type="image/jpeg" href="https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775836472/rwwdvrpo2afmvktqd1da.jpg">
+    
+    <!-- مفتاح جوجل الحقيقي تم استعادته -->
     <meta name="google-site-verification" content="XefzY43qDNb1CrV4OUGuqRGJcfpoR91lq930N53rXwc" />
 
     <meta name="description" content="الموقع الرسمي للمهندس شهاب طارق صلاح. مطور مواقع ويب متكاملة ومحاسب. متخصص في بناء المنصات التعليمية، المتاجر الإلكترونية، والمواقع الخدمية السريعة المرفوعة على Vercel.">
@@ -23,21 +25,9 @@
                 extend: {
                     colors: {
                         brand: {
-                            50: '#f0fdfa',
-                            100: '#ccfbf1',
-                            200: '#99f6e4',
-                            300: '#5eead4',
-                            400: '#2dd4bf',
-                            500: '#14b8a6', 
-                            600: '#0d9488',
-                            700: '#0f766e',
-                            800: '#115e59',
-                            900: '#134e4a',
-                            950: '#042f2e',
+                            50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 300: '#5eead4', 400: '#2dd4bf', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e', 800: '#115e59', 900: '#134e4a', 950: '#042f2e',
                         },
-                        background: {
-                            dark: '#020617', 
-                        }
+                        background: { dark: '#020617' }
                     },
                     fontFamily: {
                         cairo: ['CairoLocal', 'sans-serif'],
@@ -51,7 +41,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* استدعاء الخطوط محلياً */
         @font-face {
             font-family: 'CairoLocal';
             src: url('./fonts/Cairo-Regular.ttf') format('truetype');
@@ -96,20 +85,15 @@
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         
-        .portfolio-image {
-            transition: all 0.7s ease;
-        }
+        .portfolio-image { transition: all 0.7s ease; }
 
-        /* منع اللاج على الموبايل عبر تفعيل الهوفر للماوس فقط */
         @media (hover: hover) and (pointer: fine) {
             ::-webkit-scrollbar-thumb:hover { background: #14b8a6; }
-            
             .portfolio-card:hover {
                 transform: translateY(-6px);
                 border-color: rgba(45, 212, 191, 0.5);
                 box-shadow: 0 10px 30px rgba(20, 184, 166, 0.15);
             }
-
             .portfolio-card:hover .portfolio-image {
                 opacity: 1 !important;
                 transform: scale(1.05);
@@ -140,24 +124,37 @@
             -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
             mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
         }
+
+        #backToTopBtn {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        #backToTopBtn.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-brand-500 selection:text-slate-900 relative">
 
-    <!-- المتصفح الداخلي المنبثق للصورة (Lightbox Modal) بعد التعديل -->
+    <!-- زر العودة للأعلى -->
+    <button id="backToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 z-50 bg-brand-600 hover:bg-brand-500 text-white w-12 h-12 rounded-2xl shadow-[0_0_20px_rgba(20,184,166,0.3)] flex items-center justify-center text-xl border border-brand-400/50 focus:outline-none">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- المتصفح الداخلي المنبثق للصورة -->
     <div id="imageModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/95 backdrop-blur-md opacity-0 transition-opacity duration-300 w-full h-full" onclick="closeModal()">
-        <!-- زر الإغلاق المحسن والموضح -->
         <button onclick="closeModal()" class="absolute top-6 right-6 bg-slate-800 hover:bg-slate-700 text-white w-12 h-12 rounded-full flex items-center justify-center text-2xl transition-all shadow-lg border border-slate-600 focus:outline-none z-50">
             <i class="fas fa-times"></i>
         </button>
-        <!-- الصورة -->
         <img src="" id="modalImg" class="max-w-[90vw] max-h-[85vh] rounded-2xl shadow-2xl scale-95 transition-transform duration-300 object-contain border border-slate-700/50 relative z-40" onclick="event.stopPropagation()">
     </div>
 
     <!-- Hero Section -->
     <header class="relative min-h-screen flex items-center justify-center overflow-hidden grid-pattern">
-
-        <!-- Video Background -->
         <div class="absolute inset-0 z-0 w-full h-full bg-[#020617]">
             <video id="hero-video" autoplay loop muted playsinline class="smart-video w-full h-full object-cover object-center opacity-50">
                 <source src="https://res.cloudinary.com/dsxrjmcxs/video/upload/w_700,q_auto,f_auto/v1784443019/hepkjca6gjpeux5jpoqw.mp4" type="video/mp4">
@@ -169,15 +166,10 @@
         <div class="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] radial-glow pointer-events-none z-0"></div>
 
         <div class="relative z-10 max-w-5xl mx-auto px-6 py-24 text-center flex flex-col items-center">
-
-            <!-- الصورة الشخصية قابلة للضغط (تمرير مسار الصورة لـ Modal) -->
             <div class="relative mb-8 group cursor-pointer" onclick="openModal('https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775351048/djm9ursqqk7azfbxnuof.jpg')" title="اضغط لتكبير الصورة">
                 <div class="absolute inset-0 bg-gradient-to-tr from-brand-500 to-emerald-600 rounded-[2.5rem] blur-xl opacity-30 transition duration-700"></div>
                 <div class="relative w-40 h-52 rounded-[2rem] overflow-hidden border border-brand-500/30 p-1.5 bg-slate-900 shadow-lg transform transition hover:scale-105">
-                    <img src="https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775351048/djm9ursqqk7azfbxnuof.jpg" 
-                         alt="شهاب طارق صلاح" 
-                         loading="lazy"
-                         class="w-full h-full object-cover rounded-[1.7rem]">
+                    <img src="https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775351048/djm9ursqqk7azfbxnuof.jpg" alt="شهاب طارق صلاح" loading="lazy" class="w-full h-full object-cover rounded-[1.7rem]">
                 </div>
             </div>
 
@@ -206,7 +198,6 @@
                     للتواصل
                 </a>
             </div>
-
         </div>
     </header>
 
@@ -222,22 +213,61 @@
     <!-- Main Content Container -->
     <main class="max-w-6xl mx-auto px-6 relative z-10 pb-24 pt-0">
 
-        <!-- قسم المشاريع -->
-        <section id="portfolio" class="pt-6 pb-12 scroll-mt-24">
-            <div class="text-center mb-10 reveal-on-scroll">
-                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-100 mb-4">
-                    أعمالي السابقة
-                </h2>
+        <!-- ========================================== -->
+        <!-- قسم الخدمات المحدث (4 بطاقات مستوحاة من الصورة) -->
+        <!-- ========================================== -->
+        <section id="services" class="py-12 reveal-on-scroll scroll-mt-24">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-100 mb-4">خدماتي</h2>
                 <div class="h-1 w-20 bg-brand-500 mx-auto rounded-full mb-6 opacity-80"></div>
-                <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
-                    مجموعة من المنصات التفاعلية المخصصة التي قمت بتطويرها بالكامل واستضافتها بنجاح على سيرفرات سحابية لضمان أقصى كفاءة للمستخدمين بمصر والوطن العربي.
-                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- خدمة 1 -->
+                <div class="portfolio-card p-6 rounded-2xl flex flex-col items-center text-center">
+                    <div class="w-14 h-14 rounded-full bg-brand-900/50 text-brand-400 flex items-center justify-center text-xl mb-4 border border-brand-500/20 shadow-inner">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-100 mb-2">المتاجر الإلكترونية</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">بناء متاجر احترافية آمنة وسهلة الإدارة لعرض منتجاتك وزيادة مبيعاتك أونلاين.</p>
+                </div>
+                <!-- خدمة 2 -->
+                <div class="portfolio-card p-6 rounded-2xl flex flex-col items-center text-center">
+                    <div class="w-14 h-14 rounded-full bg-brand-900/50 text-brand-400 flex items-center justify-center text-xl mb-4 border border-brand-500/20 shadow-inner">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-100 mb-2">الشركات والمؤسسات</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">تصميم مواقع للشركات، العيادات، والمطاعم لتعريف احترافي بخدماتك وبناء ثقة العملاء.</p>
+                </div>
+                <!-- خدمة 3 -->
+                <div class="portfolio-card p-6 rounded-2xl flex flex-col items-center text-center">
+                    <div class="w-14 h-14 rounded-full bg-brand-900/50 text-brand-400 flex items-center justify-center text-xl mb-4 border border-brand-500/20 shadow-inner">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-100 mb-2">الأنظمة ولوحات التحكم</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">حلول برمجية مخصصة وأنظمة إدارية خاصة لتسهيل ومتابعة سير أعمالك بدقة.</p>
+                </div>
+                <!-- خدمة 4 -->
+                <div class="portfolio-card p-6 rounded-2xl flex flex-col items-center text-center">
+                    <div class="w-14 h-14 rounded-full bg-brand-900/50 text-brand-400 flex items-center justify-center text-xl mb-4 border border-brand-500/20 shadow-inner">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-100 mb-2">جودة ودعم مستمر</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">كود نظيف متوافق مع كافة الأجهزة، سرعة وأمان عالي، مع دعم فني مستمر بعد التسليم.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم المشاريع -->
+        <section id="portfolio" class="pt-12 pb-12 scroll-mt-24 border-t border-slate-800">
+            <div class="text-center mb-10 reveal-on-scroll">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-100 mb-4">أعمالي السابقة</h2>
+                <div class="h-1 w-20 bg-brand-500 mx-auto rounded-full mb-6 opacity-80"></div>
+                <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">مجموعة من المنصات التفاعلية المخصصة التي قمت بتطويرها بالكامل واستضافتها بنجاح على سيرفرات سحابية.</p>
             </div>
 
-            <!-- Projects Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                <!-- 1 -->
+                <!-- بطاقة 1 -->
                 <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
                     <div class="relative aspect-video overflow-hidden border-b border-slate-700">
                         <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1777053979/db2pwzzdnakgowp9tx7u.jpg" alt="خدمات كلية تجارة" loading="lazy" class="portfolio-image w-full h-full object-cover opacity-85">
@@ -245,17 +275,16 @@
                     <div class="p-6 flex-grow flex flex-col">
                         <div class="flex justify-between items-center mb-3">
                             <h3 class="text-lg font-bold text-slate-100">بوابة خدمات كلية التجارة</h3>
-                            <span class="text-xs px-2.5 py-1 rounded-full bg-brand-900/50 text-brand-300 border border-brand-700/50 shadow-sm">جامعي</span>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-brand-900/50 text-brand-300 border border-brand-700/50">جامعي</span>
                         </div>
-                        <p class="text-slate-300 text-sm mb-6 flex-grow">منصة تفاعلية تخدم طلاب كلية التجارة بجامعة الزقازيق، تتيح تصفح الجداول والمحاضرات بسلاسة فائقة.</p>
-                        <!-- زر المنصة بتدرج الفضي إلى الأخضر/التيل -->
-                        <a href="https://faculty-of-commerce.vercel.app/" target="_blank" class="mt-auto w-full py-3 bg-gradient-to-r from-brand-700 to-slate-500 hover:from-brand-500 hover:to-slate-400 text-white text-center rounded-xl transition-all duration-300 font-medium flex items-center justify-center gap-2 text-sm border border-brand-500/30 shadow-md">
+                        <p class="text-slate-300 text-sm mb-6 flex-grow">منصة تفاعلية تخدم طلاب كلية التجارة بجامعة الزقازيق، تتيح تصفح الجداول والمحاضرات.</p>
+                        <a href="https://faculty-of-commerce.vercel.app/" target="_blank" class="mt-auto w-full py-3 bg-brand-500 hover:bg-brand-400 text-slate-950 text-center rounded-xl transition-all duration-300 font-extrabold flex items-center justify-center gap-2 text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">
                             زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
                         </a>
                     </div>
                 </article>
 
-                <!-- 2 -->
+                <!-- بطاقة 2 -->
                 <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
                     <div class="relative aspect-video overflow-hidden border-b border-slate-700">
                         <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1777053974/burcenkiplmzhevq730f.jpg" alt="مسجد الرحمن" loading="lazy" class="portfolio-image w-full h-full object-cover opacity-85">
@@ -263,16 +292,16 @@
                     <div class="p-6 flex-grow flex flex-col">
                         <div class="flex justify-between items-center mb-3">
                             <h3 class="text-lg font-bold text-slate-100">موقع مسجد الرحمن</h3>
-                            <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-900/50 text-emerald-300 border border-emerald-700/50 shadow-sm">منصة إسلامية</span>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-900/50 text-emerald-300 border border-emerald-700/50">منصة إسلامية</span>
                         </div>
-                        <p class="text-slate-300 text-sm mb-6 flex-grow">تطبيق ويب خدمي مخصص لمواقيت الصلاة، الأخبار الأسبوعية، والفعاليات الثقافية لمجتمع مسجد الرحمن بـ Perstorp.</p>
-                        <a href="https://mosk-staden-perstorp.vercel.app/" target="_blank" class="mt-auto w-full py-3 bg-gradient-to-r from-brand-700 to-slate-500 hover:from-brand-500 hover:to-slate-400 text-white text-center rounded-xl transition-all duration-300 font-medium flex items-center justify-center gap-2 text-sm border border-brand-500/30 shadow-md">
+                        <p class="text-slate-300 text-sm mb-6 flex-grow">تطبيق ويب خدمي مخصص لمواقيت الصلاة والأخبار لمجتمع مسجد الرحمن بـ Perstorp.</p>
+                        <a href="https://mosk-staden-perstorp.vercel.app/" target="_blank" class="mt-auto w-full py-3 bg-brand-500 hover:bg-brand-400 text-slate-950 text-center rounded-xl transition-all duration-300 font-extrabold flex items-center justify-center gap-2 text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">
                             زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
                         </a>
                     </div>
                 </article>
 
-                <!-- 3 -->
+                <!-- بطاقة 3 -->
                 <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
                     <div class="relative aspect-video overflow-hidden border-b border-slate-700">
                         <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1777053975/fgtcwsg8heguqvtdvena.jpg" alt="وظائف الشرقية" loading="lazy" class="portfolio-image w-full h-full object-cover opacity-85">
@@ -280,16 +309,16 @@
                     <div class="p-6 flex-grow flex flex-col">
                         <div class="flex justify-between items-center mb-3">
                             <h3 class="text-lg font-bold text-slate-100">وظائف وخدمات الشرقية</h3>
-                            <span class="text-xs px-2.5 py-1 rounded-full bg-sky-900/50 text-sky-300 border border-sky-700/50 shadow-sm">منصة وظائف</span>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-sky-900/50 text-sky-300 border border-sky-700/50">منصة وظائف</span>
                         </div>
-                        <p class="text-slate-300 text-sm mb-6 flex-grow">منصة متكاملة تربط أصحاب الأعمال بالمستقلين والباحثين عن العمل على مستوى محافظة الشرقية.</p>
-                        <a href="https://sharqiya.vercel.app/" target="_blank" class="mt-auto w-full py-3 bg-gradient-to-r from-brand-700 to-slate-500 hover:from-brand-500 hover:to-slate-400 text-white text-center rounded-xl transition-all duration-300 font-medium flex items-center justify-center gap-2 text-sm border border-brand-500/30 shadow-md">
+                        <p class="text-slate-300 text-sm mb-6 flex-grow">منصة متكاملة تربط أصحاب الأعمال بالمستقلين والباحثين عن العمل على مستوى الشرقية.</p>
+                        <a href="https://sharqiya.vercel.app/" target="_blank" class="mt-auto w-full py-3 bg-brand-500 hover:bg-brand-400 text-slate-950 text-center rounded-xl transition-all duration-300 font-extrabold flex items-center justify-center gap-2 text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">
                             زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
                         </a>
                     </div>
                 </article>
 
-                <!-- 4 -->
+                <!-- بطاقة 4 -->
                 <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
                     <div class="relative aspect-video overflow-hidden border-b border-slate-700">
                         <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1777053977/nrleaa5sbfvklzeqhhar.jpg" alt="السوق وياك" loading="lazy" class="portfolio-image w-full h-full object-cover opacity-85">
@@ -297,16 +326,16 @@
                     <div class="p-6 flex-grow flex flex-col">
                         <div class="flex justify-between items-center mb-3">
                             <h3 class="text-lg font-bold text-slate-100">السوق وياك العقاري</h3>
-                            <span class="text-xs px-2.5 py-1 rounded-full bg-amber-900/50 text-amber-300 border border-amber-700/50 shadow-sm">تسويق عقاري</span>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-amber-900/50 text-amber-300 border border-amber-700/50">تسويق عقاري</span>
                         </div>
-                        <p class="text-slate-300 text-sm mb-6 flex-grow">تطبيق ويب متقدم لعرض وتقييم العقارات والوحدات السكنية مع نظام تصفية وبحث ذكي للمستخدمين.</p>
-                        <a href="https://real-estate-nine-kohl.vercel.app/" target="_blank" class="mt-auto w-full py-3 bg-gradient-to-r from-brand-700 to-slate-500 hover:from-brand-500 hover:to-slate-400 text-white text-center rounded-xl transition-all duration-300 font-medium flex items-center justify-center gap-2 text-sm border border-brand-500/30 shadow-md">
+                        <p class="text-slate-300 text-sm mb-6 flex-grow">تطبيق ويب لعرض وتقييم العقارات والوحدات السكنية مع نظام تصفية وبحث ذكي.</p>
+                        <a href="https://real-estate-nine-kohl.vercel.app/" target="_blank" class="mt-auto w-full py-3 bg-brand-500 hover:bg-brand-400 text-slate-950 text-center rounded-xl transition-all duration-300 font-extrabold flex items-center justify-center gap-2 text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">
                             زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
                         </a>
                     </div>
                 </article>
 
-                <!-- 5 -->
+                <!-- بطاقة 5 -->
                 <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
                     <div class="relative aspect-video overflow-hidden border-b border-slate-700">
                         <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1777053969/ewo856wuumavsdcds9uw.jpg" alt="جامعه ستور" loading="lazy" class="portfolio-image w-full h-full object-cover opacity-85">
@@ -314,16 +343,16 @@
                     <div class="p-6 flex-grow flex flex-col">
                         <div class="flex justify-between items-center mb-3">
                             <h3 class="text-lg font-bold text-slate-100">جامعة ستور للتسويق</h3>
-                            <span class="text-xs px-2.5 py-1 rounded-full bg-pink-900/50 text-pink-300 border border-pink-700/50 shadow-sm">متجر إلكتروني</span>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-pink-900/50 text-pink-300 border border-pink-700/50">متجر إلكتروني</span>
                         </div>
-                        <p class="text-slate-300 text-sm mb-6 flex-grow">متجر تسويقي حديث مبسط ومحسن للتوافق مع شاشات الهواتف المحمولة وتسهيل عمليات البيع والطلب المباشر.</p>
-                        <a href="https://gam3a-store.vercel.app/" target="_blank" class="mt-auto w-full py-3 bg-gradient-to-r from-brand-700 to-slate-500 hover:from-brand-500 hover:to-slate-400 text-white text-center rounded-xl transition-all duration-300 font-medium flex items-center justify-center gap-2 text-sm border border-brand-500/30 shadow-md">
+                        <p class="text-slate-300 text-sm mb-6 flex-grow">متجر تسويقي حديث مبسط لتسهيل عمليات البيع والطلب المباشر وتجربة الشراء.</p>
+                        <a href="https://gam3a-store.vercel.app/" target="_blank" class="mt-auto w-full py-3 bg-brand-500 hover:bg-brand-400 text-slate-950 text-center rounded-xl transition-all duration-300 font-extrabold flex items-center justify-center gap-2 text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">
                             زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
                         </a>
                     </div>
                 </article>
 
-                <!-- 6 -->
+                <!-- بطاقة 6 -->
                 <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
                     <div class="relative aspect-video overflow-hidden border-b border-slate-700">
                         <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1777053972/qwchcjqm19u0pp1gaqpy.jpg" alt="منصة روز" loading="lazy" class="portfolio-image w-full h-full object-cover opacity-85">
@@ -331,10 +360,10 @@
                     <div class="p-6 flex-grow flex flex-col">
                         <div class="flex justify-between items-center mb-3">
                             <h3 class="text-lg font-bold text-slate-100">منصة روز التعليمية</h3>
-                            <span class="text-xs px-2.5 py-1 rounded-full bg-purple-900/50 text-purple-300 border border-purple-700/50 shadow-sm">منصة تعليمية</span>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-purple-900/50 text-purple-300 border border-purple-700/50">منصة تعليمية</span>
                         </div>
-                        <p class="text-slate-300 text-sm mb-6 flex-grow">نظام تعليمي متكامل للثانوية العامة يعتمد على عرض المحاضرات والتقارير والاختبارات التفاعلية أونلاين.</p>
-                        <a href="https://natega-rose.vercel.app/" target="_blank" class="mt-auto w-full py-3 bg-gradient-to-r from-brand-700 to-slate-500 hover:from-brand-500 hover:to-slate-400 text-white text-center rounded-xl transition-all duration-300 font-medium flex items-center justify-center gap-2 text-sm border border-brand-500/30 shadow-md">
+                        <p class="text-slate-300 text-sm mb-6 flex-grow">نظام تعليمي للثانوية العامة يعتمد على عرض المحاضرات والاختبارات التفاعلية أونلاين.</p>
+                        <a href="https://natega-rose.vercel.app/" target="_blank" class="mt-auto w-full py-3 bg-brand-500 hover:bg-brand-400 text-slate-950 text-center rounded-xl transition-all duration-300 font-extrabold flex items-center justify-center gap-2 text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">
                             زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
                         </a>
                     </div>
@@ -347,12 +376,11 @@
         <section id="contact" class="py-12 border-t border-slate-800 scroll-mt-24">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
 
-                <!-- Contact Details -->
                 <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-700 border border-brand-500/20 shadow-[0_10px_30px_rgba(20,184,166,0.1)] rounded-3xl p-8 flex flex-col justify-center reveal-on-scroll">
                     <h3 class="text-2xl font-bold mb-2 text-slate-100">استلم موقعك بأقل سعر مع صيانة مجانية</h3>
                     <p class="text-brand-300 text-sm mb-6 font-medium">طرق التواصل المتاحة</p>
 
-                    <!-- صورة السوشيال الميديا: 1:1، حواف دائرية (شكل دائري)، وتفتح في نافذة -->
+                    <!-- صورة السوشيال ميديا -->
                     <div class="w-40 h-40 sm:w-48 sm:h-48 mx-auto mb-8 rounded-full overflow-hidden border-4 border-slate-600 shadow-xl relative cursor-pointer group" onclick="openModal('https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775836472/rwwdvrpo2afmvktqd1da.jpg')" title="اضغط لتكبير الصورة">
                         <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10 rounded-full"></div>
                         <img src="https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775836472/rwwdvrpo2afmvktqd1da.jpg" alt="أعمال شهاب طارق" loading="lazy" class="w-full h-full object-cover transform transition duration-500 group-hover:scale-110">
@@ -390,7 +418,6 @@
                         </div>
                     </div>
 
-                    <!-- السوشيال ميديا -->
                     <div class="flex gap-4 mt-8 pt-6 border-t border-slate-700 justify-center">
                         <a href="https://www.facebook.com/share/1CWMh7BYxU/" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-[#1877F2] hover:text-white flex items-center justify-center text-slate-300 transition-all border border-slate-600 shadow-md">
                             <i class="fab fa-facebook-f"></i>
@@ -401,7 +428,7 @@
                     </div>
                 </div>
 
-                <!-- خريطة الزقازيق -->
+                <!-- الخريطة -->
                 <div class="rounded-3xl overflow-hidden reveal-on-scroll h-full min-h-[350px] shadow-[0_10px_30px_rgba(20,184,166,0.1)] border border-brand-500/20 relative">
                     <iframe 
                         src="https://maps.google.com/maps?q=الزقازيق&t=k&z=13&ie=UTF8&iwloc=&output=embed" 
@@ -411,7 +438,6 @@
                         referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
-
             </div>
         </section>
 
@@ -436,20 +462,16 @@
         <p class="text-xs text-slate-400">جميع الحقوق محفوظة © <span id="year"></span> | استضافة فائقة السرعة عبر Vercel</p>
     </footer>
 
-    <!-- Optimized JavaScript -->
+    <!-- Scripts -->
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // دوال المتصفح الداخلي للصورة (Modal) - محسنة لحل مشكلة التوسيط
+        // 1. نظام الـ Modal للصور
         function openModal(imgSrc) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImg');
-            
-            modalImg.src = imgSrc; // تمرير مسار الصورة
-            
-            // قفل التمرير لمنع ظهور الصورة بالأعلى
-            document.body.style.overflow = 'hidden';
-            
+            modalImg.src = imgSrc; 
+            document.body.style.overflow = 'hidden'; 
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             
@@ -471,22 +493,15 @@
             setTimeout(() => {
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
-                // إعادة تفعيل التمرير
-                document.body.style.overflow = '';
+                document.body.style.overflow = ''; 
             }, 300);
         }
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
-        // إغلاق الصورة بزر ESC 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
-
-        // مراقبة السكرول والفيديوهات
+        // 2. المراقب الشامل
         document.addEventListener("DOMContentLoaded", () => {
             const heroVideo = document.getElementById('hero-video');
-            if (heroVideo) {
-                heroVideo.playbackRate = 0.5; 
-            }
+            if (heroVideo) heroVideo.playbackRate = 0.5; 
 
             const scrollObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
@@ -497,26 +512,28 @@
                 });
             }, { threshold: 0.1, rootMargin: '50px' });
 
-            document.querySelectorAll('.reveal-on-scroll').forEach((element) => {
-                scrollObserver.observe(element);
-            });
+            document.querySelectorAll('.reveal-on-scroll').forEach(el => scrollObserver.observe(el));
 
             const videos = document.querySelectorAll('.smart-video');
             const videoObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    const video = entry.target;
                     if (entry.isIntersecting) {
-                        if(video.id === 'hero-video') {
-                            video.play().catch(e => console.log("Auto-play prevented"));
-                        }
+                        if(entry.target.id === 'hero-video') entry.target.play().catch(()=>console.log("Auto-play prevented"));
                     } else {
-                        video.pause();
+                        entry.target.pause();
                     }
                 });
             }, { threshold: 0.05 }); 
+            videos.forEach(video => videoObserver.observe(video));
 
-            videos.forEach(video => {
-                videoObserver.observe(video);
+            // 3. مراقب زر العودة للأعلى
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 500) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
             });
         });
     </script>
