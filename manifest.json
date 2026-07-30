@@ -1,0 +1,22 @@
+{
+  "name": "شهاب طارق صلاح | مطور ويب",
+  "short_name": "شهاب طارق",
+  "description": "الموقع الرسمي للمهندس شهاب طارق صلاح - مطور مواقع ويب متكاملة ومحاسب.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#0d9488",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775836472/rwwdvrpo2afmvktqd1da.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775836472/rwwdvrpo2afmvktqd1da.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
