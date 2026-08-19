@@ -16,6 +16,7 @@
     <meta name="keywords" content="شهاب طارق, مبرمج الزقازيق, مهندس برمجيات, مطور ويب, شهاب طارق صلاح, شهاب طارق شوبك بسطه, شهاب الزقازيق, شهاب الشوبكي, شهاب الباش محاسب, تصميم مواقع, Vercel, React, Frontend Developer, اعمال شهاب طارق, شوبك بسطه مركز الزقازيق الشرقية, محاسب ومبرمج, تجارة الزقازيق, Shehab Tarek Salah">
     <meta name="author" content="شهاب طارق">
     <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://shehab-tarek1.github.io/Shehab-Tarek/">
 
     <!-- Open Graph / معاينة المشاركة على فيسبوك وواتساب -->
     <meta property="og:type" content="website">
@@ -43,38 +44,28 @@
                         background: { dark: '#020617' }
                     },
                     fontFamily: {
-                        cairo: ['CairoLocal', 'sans-serif'],
+                        cairo: ['Cairo', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
 
+    <!-- تحسين سرعة الاتصال بالمصادر الخارجية -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://res.cloudinary.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- خط Cairo من Google Fonts (أسرع وأضمن من الملفات المحلية) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        @font-face {
-            font-family: 'CairoLocal';
-            src: url('./fonts/Cairo-Regular.ttf') format('truetype');
-            font-weight: 400;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'CairoLocal';
-            src: url('./fonts/Cairo-Bold.ttf') format('truetype');
-            font-weight: 700;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'CairoLocal';
-            src: url('./fonts/Cairo-ExtraBold.ttf') format('truetype');
-            font-weight: 800;
-            font-display: swap;
-        }
-
         body {
-            font-family: 'CairoLocal', sans-serif;
+            font-family: 'Cairo', sans-serif;
             background-color: #020617;
             color: #e2e8f0;
             overflow-x: hidden;
@@ -92,10 +83,8 @@
 
         .portfolio-card {
             background: linear-gradient(to right, #1e293b, #334155);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(51, 65, 85, 0.8);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
         }
 
         .portfolio-image { transition: all 0.7s ease; }
@@ -169,8 +158,8 @@
     <!-- Hero Section -->
     <header class="relative min-h-screen flex items-center justify-center overflow-hidden grid-pattern">
         <div class="absolute inset-0 z-0 w-full h-full bg-[#020617]">
-            <video id="hero-video" autoplay loop muted playsinline class="smart-video w-full h-full object-cover object-center opacity-50">
-                <source src="https://res.cloudinary.com/dsxrjmcxs/video/upload/w_700,q_auto,f_auto/v1784443019/hepkjca6gjpeux5jpoqw.mp4" type="video/mp4">
+            <video id="hero-video" autoplay loop muted playsinline preload="auto" class="smart-video w-full h-full object-cover object-center opacity-50">
+                <source src="https://res.cloudinary.com/dsxrjmcxs/video/upload/w_640,q_auto:eco,f_auto/v1784443019/hepkjca6gjpeux5jpoqw.mp4" type="video/mp4">
             </video>
             <div class="absolute inset-0 video-overlay"></div>
         </div>
@@ -182,7 +171,7 @@
             <div class="relative mb-8 group cursor-pointer" onclick="openModal('https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775351048/djm9ursqqk7azfbxnuof.jpg')" title="اضغط لتكبير الصورة">
                 <div class="absolute inset-0 bg-gradient-to-tr from-brand-500 to-emerald-600 rounded-[2.5rem] blur-xl opacity-30 transition duration-700"></div>
                 <div class="relative w-40 h-52 rounded-[2rem] overflow-hidden border border-brand-500/30 p-1.5 bg-slate-900 shadow-lg transform transition hover:scale-105">
-                    <img src="https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775351048/djm9ursqqk7azfbxnuof.jpg" alt="شهاب طارق صلاح" loading="lazy" class="w-full h-full object-cover rounded-[1.7rem]">
+                    <img src="https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775351048/djm9ursqqk7azfbxnuof.jpg" alt="شهاب طارق صلاح" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover rounded-[1.7rem]">
                 </div>
             </div>
 
@@ -217,8 +206,8 @@
     <!-- الفيديو المدمج في الخلفية -->
     <section class="relative w-full max-w-6xl mx-auto -mt-10 mb-2 z-10 reveal-on-scroll">
         <div class="w-full aspect-video video-blend-edges">
-            <video id="showcase-video" controls playsinline class="smart-video w-full h-full object-cover opacity-80 transition-opacity duration-500">
-                <source src="https://res.cloudinary.com/dsxrjmcxs/video/upload/q_auto,f_auto/v1784440819/lwrmd0jkmgurvv6dtvlb.mp4" type="video/mp4">
+            <video id="showcase-video" controls playsinline preload="metadata" class="smart-video w-full h-full object-cover opacity-80 transition-opacity duration-500">
+                <source src="https://res.cloudinary.com/dsxrjmcxs/video/upload/q_auto:eco,f_auto/v1784440819/lwrmd0jkmgurvv6dtvlb.mp4" type="video/mp4">
             </video>
         </div>
     </section>
@@ -280,10 +269,28 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- بطاقة جديدة: Taxi AlpGo -->
+                <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll relative">
+                    <span class="absolute top-3 left-3 z-10 text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-brand-500 text-slate-950 shadow-[0_0_10px_rgba(20,184,166,0.5)]">جديد</span>
+                    <div class="relative aspect-video overflow-hidden border-b border-slate-700">
+                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1786738438/lpvcfoqx38rsydftoeht.jpg" alt="Taxi AlpGo - خدمة نقل سياحي في ألمانيا والنمسا" loading="lazy" decoding="async" class="portfolio-image w-full h-full object-cover opacity-85">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-lg font-bold text-slate-100">Taxi AlpGo</h3>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-orange-900/50 text-orange-300 border border-orange-700/50">نقل سياحي</span>
+                        </div>
+                        <p class="text-slate-300 text-sm mb-6 flex-grow">موقع خدمة تاكسي وليموزين فاخرة بين إنسبروك وميونخ وفرانكفورت وبرلين ومنطقة الألب، مع نظام حجز وخدمات نقل مطارات وتزلج، بواجهة ثلاث لغات.</p>
+                        <a href="https://taxi-alpgo.vercel.app/" target="_blank" rel="noopener" class="mt-auto w-full py-3 bg-brand-500 hover:bg-brand-400 text-slate-950 text-center rounded-xl transition-all duration-300 font-extrabold flex items-center justify-center gap-2 text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">
+                            زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
+                        </a>
+                    </div>
+                </article>
+
                 <!-- بطاقة 1 -->
                 <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
                     <div class="relative aspect-video overflow-hidden border-b border-slate-700">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1777053979/db2pwzzdnakgowp9tx7u.jpg" alt="بوابة خدمات كلية التجارة بجامعة الزقازيق" loading="lazy" class="portfolio-image w-full h-full object-cover opacity-85">
+                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1777053979/db2pwzzdnakgowp9tx7u.jpg" alt="بوابة خدمات كلية التجارة بجامعة الزقازيق" loading="lazy" decoding="async" class="portfolio-image w-full h-full object-cover opacity-85">
                     </div>
                     <div class="p-6 flex-grow flex flex-col">
                         <div class="flex justify-between items-center mb-3">
@@ -300,7 +307,7 @@
                 <!-- بطاقة 2 -->
                 <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
                     <div class="relative aspect-video overflow-hidden border-b border-slate-700">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1777053974/burcenkiplmzhevq730f.jpg" alt="موقع مسجد الرحمن لمواقيت الصلاة والأخبار" loading="lazy" class="portfolio-image w-full h-full object-cover opacity-85">
+                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1777053974/burcenkiplmzhevq730f.jpg" alt="موقع مسجد الرحمن لمواقيت الصلاة والأخبار" loading="lazy" decoding="async" class="portfolio-image w-full h-full object-cover opacity-85">
                     </div>
                     <div class="p-6 flex-grow flex flex-col">
                         <div class="flex justify-between items-center mb-3">
@@ -317,7 +324,7 @@
                 <!-- بطاقة 3 -->
                 <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
                     <div class="relative aspect-video overflow-hidden border-b border-slate-700">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1777053975/fgtcwsg8heguqvtdvena.jpg" alt="منصة وظائف وخدمات الشرقية" loading="lazy" class="portfolio-image w-full h-full object-cover opacity-85">
+                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1777053975/fgtcwsg8heguqvtdvena.jpg" alt="منصة وظائف وخدمات الشرقية" loading="lazy" decoding="async" class="portfolio-image w-full h-full object-cover opacity-85">
                     </div>
                     <div class="p-6 flex-grow flex flex-col">
                         <div class="flex justify-between items-center mb-3">
@@ -334,7 +341,7 @@
                 <!-- بطاقة 4 -->
                 <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
                     <div class="relative aspect-video overflow-hidden border-b border-slate-700">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1777053977/nrleaa5sbfvklzeqhhar.jpg" alt="السوق وياك منصة تسويق عقاري" loading="lazy" class="portfolio-image w-full h-full object-cover opacity-85">
+                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1777053977/nrleaa5sbfvklzeqhhar.jpg" alt="السوق وياك منصة تسويق عقاري" loading="lazy" decoding="async" class="portfolio-image w-full h-full object-cover opacity-85">
                     </div>
                     <div class="p-6 flex-grow flex flex-col">
                         <div class="flex justify-between items-center mb-3">
@@ -351,7 +358,7 @@
                 <!-- بطاقة 5 -->
                 <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
                     <div class="relative aspect-video overflow-hidden border-b border-slate-700">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_400,q_auto,f_auto/v1786100541/b3asxaiianef4kckpnln.png" alt="جامعة ستور متجر إلكتروني تسويقي" loading="lazy" class="portfolio-image w-full h-full object-cover opacity-85">
+                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_400,q_auto,f_auto/v1786100541/b3asxaiianef4kckpnln.png" alt="جامعة ستور متجر إلكتروني تسويقي" loading="lazy" decoding="async" class="portfolio-image w-full h-full object-cover opacity-85">
                     </div>
                     <div class="p-6 flex-grow flex flex-col">
                         <div class="flex justify-between items-center mb-3">
@@ -368,7 +375,7 @@
                 <!-- بطاقة 6 -->
                 <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
                     <div class="relative aspect-video overflow-hidden border-b border-slate-700">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_400,q_auto,f_auto/v1786100553/indrwdrygklnimvnfzi5.png" alt="منصة تعليمية للثانوية العامة" loading="lazy" class="portfolio-image w-full h-full object-cover opacity-85">
+                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_400,q_auto,f_auto/v1786100553/indrwdrygklnimvnfzi5.png" alt="منصة تعليمية للثانوية العامة" loading="lazy" decoding="async" class="portfolio-image w-full h-full object-cover opacity-85">
                     </div>
                     <div class="p-6 flex-grow flex flex-col">
                         <div class="flex justify-between items-center mb-3">
@@ -377,23 +384,6 @@
                         </div>
                         <p class="text-slate-300 text-sm mb-6 flex-grow">نظام تعليمي للثانوية العامة يعتمد على عرض المحاضرات والاختبارات التفاعلية أونلاين.</p>
                         <a href="https://natega-rose.vercel.app/" target="_blank" rel="noopener" class="mt-auto w-full py-3 bg-brand-500 hover:bg-brand-400 text-slate-950 text-center rounded-xl transition-all duration-300 font-extrabold flex items-center justify-center gap-2 text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">
-                            زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- بطاقة 7: Taxi AlpGo -->
-                <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
-                    <div class="relative aspect-video overflow-hidden border-b border-slate-700">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1786738438/lpvcfoqx38rsydftoeht.jpg" alt="Taxi AlpGo - خدمة نقل سياحي في ألمانيا والنمسا" loading="lazy" class="portfolio-image w-full h-full object-cover opacity-85">
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-lg font-bold text-slate-100">Taxi AlpGo</h3>
-                            <span class="text-xs px-2.5 py-1 rounded-full bg-orange-900/50 text-orange-300 border border-orange-700/50">نقل سياحي</span>
-                        </div>
-                        <p class="text-slate-300 text-sm mb-6 flex-grow">موقع خدمة تاكسي وليموزين فاخرة بين إنسبروك وميونخ وفرانكفورت وبرلين ومنطقة الألب، مع نظام حجز وخدمات نقل مطارات وتزلج، بواجهة ثلاث لغات.</p>
-                        <a href="https://taxi-alpgo.vercel.app/" target="_blank" rel="noopener" class="mt-auto w-full py-3 bg-brand-500 hover:bg-brand-400 text-slate-950 text-center rounded-xl transition-all duration-300 font-extrabold flex items-center justify-center gap-2 text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">
                             زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
                         </a>
                     </div>
@@ -413,7 +403,7 @@
                     <!-- صورة السوشيال ميديا -->
                     <div class="w-40 h-40 sm:w-48 sm:h-48 mx-auto mb-8 rounded-full overflow-hidden border-4 border-slate-600 shadow-xl relative cursor-pointer group" onclick="openModal('https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775836472/rwwdvrpo2afmvktqd1da.jpg')" title="اضغط لتكبير الصورة">
                         <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10 rounded-full"></div>
-                        <img src="https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775836472/rwwdvrpo2afmvktqd1da.jpg" alt="أعمال شهاب طارق" loading="lazy" class="w-full h-full object-cover transform transition duration-500 group-hover:scale-110">
+                        <img src="https://res.cloudinary.com/db9h7zm1h/image/upload/q_auto,f_auto/v1775836472/rwwdvrpo2afmvktqd1da.jpg" alt="أعمال شهاب طارق" loading="lazy" decoding="async" class="w-full h-full object-cover transform transition duration-500 group-hover:scale-110">
                     </div>
 
                     <div class="space-y-4">
@@ -538,8 +528,13 @@
             const scrollObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
+                        const el = entry.target;
+                        el.classList.add('active');
+                        observer.unobserve(el);
+                        // إلغاء حجز طبقة GPU بعد انتهاء الأنيميشن لتخفيف الحمل
+                        el.addEventListener('transitionend', () => {
+                            el.style.willChange = 'auto';
+                        }, { once: true });
                     }
                 });
             }, { threshold: 0.1, rootMargin: '50px' });
