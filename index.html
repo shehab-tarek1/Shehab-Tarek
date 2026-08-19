@@ -122,9 +122,54 @@
             background: linear-gradient(to bottom, rgba(2, 6, 23, 0.3) 0%, rgba(2, 6, 23, 0.9) 100%);
         }
 
+        /* === إصلاح: استبدال mask-image (تكلفة رسم عالية جدًا على الموبايل)
+           بتدرج علوي/سفلي عادي بنفس التأثير البصري لكن بدون إعادة حساب mask
+           في كل فريم أثناء السكرول === */
         .video-blend-edges {
-            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-            mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+            position: relative;
+            isolation: isolate;
+            transform: translateZ(0);
+        }
+        .video-blend-edges::before,
+        .video-blend-edges::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 18%;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .video-blend-edges::before {
+            top: 0;
+            background: linear-gradient(to bottom, #020617 0%, transparent 100%);
+        }
+        .video-blend-edges::after {
+            bottom: 0;
+            background: linear-gradient(to top, #020617 0%, transparent 100%);
+        }
+
+        /* === إصلاح: عزل الفيديوهات في layer خاص بها (GPU compositing)
+           بدل ما تترسم مع باقي الصفحة أثناء السكرول === */
+        .smart-video {
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+
+        /* === إصلاح: تخفيف حجم/تكلفة الـ radial-glow اللي كانت بتترسم
+           باستمرار فوق الفيديو أثناء الحركة === */
+        .radial-glow {
+            will-change: transform;
+            transform: translateZ(0);
+            contain: layout paint;
+        }
+
+        /* === إصلاح: تأجيل حساب الـ layout/paint للأقسام تحت الفولد
+           لتقليل العبء أثناء السكرول === */
+        #services, #portfolio, #contact {
+            content-visibility: auto;
+            contain-intrinsic-size: 1px 1200px;
         }
 
         #backToTopBtn {
@@ -158,7 +203,7 @@
     <!-- Hero Section -->
     <header class="relative min-h-screen flex items-center justify-center overflow-hidden grid-pattern">
         <div class="absolute inset-0 z-0 w-full h-full bg-[#020617]">
-            <video id="hero-video" autoplay loop muted playsinline preload="auto" class="smart-video w-full h-full object-cover object-center opacity-50">
+            <video id="hero-video" autoplay loop muted playsinline preload="metadata" class="smart-video w-full h-full object-cover object-center opacity-50">
                 <source src="https://res.cloudinary.com/dsxrjmcxs/video/upload/w_640,q_auto:eco,f_auto/v1784443019/hepkjca6gjpeux5jpoqw.mp4" type="video/mp4">
             </video>
             <div class="absolute inset-0 video-overlay"></div>
@@ -525,6 +570,8 @@
             const heroVideo = document.getElementById('hero-video');
             if (heroVideo) heroVideo.playbackRate = 0.5;
 
+            // === إصلاح: throttle لمراقب زر العودة للأعلى عبر requestAnimationFrame
+            // بدل ما يشتغل على كل حدث scroll مباشرة (كان بيزود العبء أثناء السحب) ===
             const scrollObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -553,15 +600,22 @@
             }, { threshold: 0.05 });
             videos.forEach(video => videoObserver.observe(video));
 
-            // 3. مراقب زر العودة للأعلى
+            // 3. مراقب زر العودة للأعلى (مع throttle عبر rAF لتخفيف الحمل أثناء السكرول)
             const backToTopBtn = document.getElementById('backToTopBtn');
+            let ticking = false;
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 500) {
-                    backToTopBtn.classList.add('show');
-                } else {
-                    backToTopBtn.classList.remove('show');
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        if (window.scrollY > 500) {
+                            backToTopBtn.classList.add('show');
+                        } else {
+                            backToTopBtn.classList.remove('show');
+                        }
+                        ticking = false;
+                    });
+                    ticking = true;
                 }
-            });
+            }, { passive: true });
         });
     </script>
 </body>
