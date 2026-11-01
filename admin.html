@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>لوحة التحكم | شهاب طارق</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{brand:{300:'#5eead4',400:'#2dd4bf',500:'#14b8a6',600:'#0d9488',900:'#134e4a'}}}}}</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap">
+<style>
+body{font-family:'Cairo',sans-serif;background:#020617;color:#e2e8f0}
+.inp{width:100%;background:#0f172a;border:1px solid #334155;border-radius:.75rem;padding:.55rem .75rem;font-size:.9rem;color:#e2e8f0;outline:none}
+.inp:focus{border-color:#14b8a6}
+.btn{background:#14b8a6;color:#020617;font-weight:800;border-radius:.75rem;padding:.55rem 1rem;font-size:.9rem}
+.btn:disabled{opacity:.5}
+.btn2{background:#1e293b;border:1px solid #334155;border-radius:.75rem;padding:.4rem .8rem;font-size:.85rem;font-weight:600}
+.card{background:linear-gradient(to right,#1e293b,#334155);border:1px solid rgba(51,65,85,.8);border-radius:1rem;padding:.9rem}
+.tab{display:none}.tab.on{display:block}
+.tb{padding:.45rem .9rem;border-radius:.75rem;background:#1e293b;font-size:.85rem;font-weight:700;white-space:nowrap}
+.tb.on{background:#14b8a6;color:#020617}
+label{font-size:.75rem;color:#94a3b8;display:block;margin-bottom:.2rem}
+</style>
+</head>
+<body>
+<div id="toast" class="hidden"></div>
+
+<!-- تسجيل الدخول -->
+<div id="login" class="min-h-screen flex items-center justify-center p-5">
+  <div class="card w-full max-w-sm space-y-3">
+    <h1 class="text-xl font-extrabold text-center">لوحة التحكم</h1>
+    <input id="email" type="email" class="inp" placeholder="البريد الإلكتروني" autocomplete="username">
+    <input id="pass" type="password" class="inp" placeholder="كلمة المرور" autocomplete="current-password">
+    <button id="loginBtn" class="btn w-full">دخول</button>
+    <p id="loginMsg" class="text-red-400 text-sm text-center"></p>
+  </div>
+</div>
+
+<!-- التطبيق -->
+<div id="app" class="hidden max-w-3xl mx-auto p-4 pb-20">
+  <div class="flex items-center justify-between mb-3">
+    <h1 class="text-lg font-extrabold">لوحة تحكم البورتفوليو</h1>
+    <div class="flex gap-2"><a href="index.html" target="_blank" class="btn2">الموقع</a><button id="logout" class="btn2">خروج</button></div>
+  </div>
+  <div class="flex gap-2 overflow-x-auto pb-2 mb-3" id="tabs">
+    <button class="tb on" data-t="projects">المشاريع</button>
+    <button class="tb" data-t="hero">الهيرو والنبذة</button>
+    <button class="tb" data-t="services">الخدمات</button>
+    <button class="tb" data-t="contact">التواصل</button>
+    <button class="tb" data-t="videos">الفيديوهات</button>
+    <button class="tb" data-t="tools">الأدوات</button>
+  </div>
+
+  <!-- المشاريع -->
+  <section class="tab on" id="t-projects">
+    <button id="addP" class="btn w-full mb-3">+ إضافة مشروع</button>
+    <div id="pf" class="card hidden space-y-2 mb-3">
+      <input type="hidden" id="p_id">
+      <div><label>اسم المشروع</label><input id="p_title" class="inp"></div>
+      <div class="grid grid-cols-2 gap-2">
+        <div><label>التصنيف</label><input id="p_tag" class="inp" placeholder="مثال: متجر إلكتروني"></div>
+        <div><label>لون التصنيف</label><select id="p_color" class="inp"></select></div>
+      </div>
+      <div><label>الوصف</label><textarea id="p_desc" rows="3" class="inp"></textarea></div>
+      <div><label>رابط المشروع</label><input id="p_url" class="inp" dir="ltr" placeholder="https://"></div>
+      <div><label>رابط الصورة</label><div class="flex gap-2"><input id="p_image" class="inp" dir="ltr"><button id="p_up" class="btn2 shrink-0">رفع صورة</button></div>
+        <img id="p_prev" class="mt-2 w-40 rounded-lg hidden"></div>
+      <div class="grid grid-cols-2 gap-2 items-end">
+        <div><label>الترتيب (الأصغر أولاً)</label><input id="p_order" type="number" class="inp"></div>
+        <label class="flex items-center gap-2 pb-2 text-sm text-slate-200"><input id="p_new" type="checkbox"> شارة "جديد"</label>
+      </div>
+      <div class="flex gap-2"><button id="p_save" class="btn flex-1">حفظ</button><button id="p_cancel" class="btn2">إلغاء</button></div>
+    </div>
+    <div id="plist" class="space-y-2"></div>
+  </section>
+
+  <!-- الهيرو والنبذة -->
+  <section class="tab" id="t-hero"><div class="card space-y-2">
+    <div><label>الشارة (الموقع الشخصي للمطور)</label><input id="h_badge" class="inp"></div>
+    <div><label>الاسم</label><input id="h_name" class="inp"></div>
+    <div><label>العنوان (يقبل HTML)</label><textarea id="h_title" rows="3" class="inp" dir="ltr"></textarea></div>
+    <div><label>النبذة القصيرة</label><textarea id="h_bio" rows="3" class="inp"></textarea></div>
+    <div class="grid grid-cols-2 gap-2"><div><label>زر الأعمال</label><input id="h_b1" class="inp"></div><div><label>زر التواصل</label><input id="h_b2" class="inp"></div></div>
+    <hr class="border-slate-600">
+    <div><label>عنوان قسم "من هو..."</label><input id="a_title" class="inp"></div>
+    <div><label>نص القسم (يقبل HTML)</label><textarea id="a_body" rows="9" class="inp" dir="ltr"></textarea></div>
+    <button id="saveHero" class="btn w-full">حفظ</button>
+  </div></section>
+
+  <!-- الخدمات -->
+  <section class="tab" id="t-services">
+    <div id="srvBox" class="space-y-2"></div>
+    <div class="flex gap-2 mt-3"><button class="btn2" data-add="srvBox">+ خدمة</button><button id="saveSrv" class="btn flex-1">حفظ الخدمات</button></div>
+    <p class="text-xs text-slate-400 mt-2">الأيقونة: اسم Font Awesome مثل <span dir="ltr">fas fa-shopping-cart</span></p>
+  </section>
+
+  <!-- التواصل -->
+  <section class="tab" id="t-contact"><div class="card space-y-2">
+    <div><label>عنوان البطاقة</label><input id="c_title" class="inp"></div>
+    <div><label>العنوان الفرعي</label><input id="c_sub" class="inp"></div>
+    <b class="block text-sm">وسائل التواصل (اترك الرابط فارغاً لعنصر بدون رابط مثل العنوان)</b>
+    <div id="itemBox" class="space-y-2"></div>
+    <button class="btn2" data-add="itemBox">+ عنصر</button>
+    <b class="block text-sm pt-2">حسابات السوشيال</b>
+    <div id="socBox" class="space-y-2"></div>
+    <button class="btn2" data-add="socBox">+ حساب</button>
+    <button id="saveContact" class="btn w-full mt-2">حفظ</button>
+  </div></section>
+
+  <!-- الفيديوهات -->
+  <section class="tab" id="t-videos"><div class="card space-y-3">
+    <div><label>فيديو الهيرو (الخلفية)</label><div class="flex gap-2"><input id="v_hero" class="inp" dir="ltr"><button class="btn2 shrink-0" data-vup="v_hero">رفع</button></div></div>
+    <div><label>فيديو العرض</label><div class="flex gap-2"><input id="v_show" class="inp" dir="ltr"><button class="btn2 shrink-0" data-vup="v_show">رفع</button></div></div>
+    <p class="text-xs text-slate-400">إن فشل رفع الفيديو (الـ preset قد يكون للصور فقط) الصق رابط الفيديو من Cloudinary مباشرة.</p>
+    <button id="saveVid" class="btn w-full">حفظ</button>
+  </div></section>
+
+  <!-- الأدوات -->
+  <section class="tab" id="t-tools"><div class="space-y-3">
+    <div class="card space-y-2">
+      <b>رفع بيانات index.html إلى Firebase</b>
+      <p class="text-xs text-slate-400">يقرأ المشاريع والخدمات والنصوص والفيديوهات والتواصل من index.html ويحفظها في Firebase. آمن لإعادته (لا يكرر المشاريع). لا يغيّر عدّاد الزوار الحالي.</p>
+      <div class="flex gap-2 flex-wrap"><button id="seedUrl" class="btn">رفع من index.html المنشور</button><button id="seedFile" class="btn2">اختيار ملف index.html</button></div>
+    </div>
+    <div class="card space-y-2">
+      <b>عدّاد الزوار</b>
+      <div class="flex gap-2"><input id="visits" type="number" class="inp"><button id="saveVisits" class="btn shrink-0">حفظ</button></div>
+    </div>
+  </div></section>
+</div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import{getFirestore,doc,getDoc,setDoc,deleteDoc,collection,getDocs,writeBatch}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+const app=initializeApp({apiKey:"AIzaSyC9Y-sqII1woywpkD_rpitf8v1wpDAF9M8",authDomain:"shehab-tarek.firebaseapp.com",projectId:"shehab-tarek",storageBucket:"shehab-tarek.firebasestorage.app",messagingSenderId:"648473762141",appId:"1:648473762141:web:b19610979f6d2daca870b4",measurementId:"G-N0FWT5G3F5"});
+const auth=getAuth(app),db=getFirestore(app);
+const ADMIN_UID='z20jQAZgSWSovUb5r1bB4q2ecXi1';
+const CLOUD='dsxrjmcxs',PRESET='My_public_preset';
+const COLORS={brand:'أخضر مائي',emerald:'أخضر',sky:'سماوي',amber:'أصفر',pink:'وردي',purple:'بنفسجي',orange:'برتقالي'};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+const toast=(m,ok=true)=>{const t=$('#toast');t.textContent=m;t.className='fixed bottom-4 inset-x-4 mx-auto max-w-sm text-center p-3 rounded-xl text-sm font-bold z-50 '+(ok?'bg-brand-500 text-slate-950':'bg-red-500 text-white');clearTimeout(t._t);t._t=setTimeout(()=>t.className='hidden',3500)};
+const busy=async(btn,fn)=>{const o=btn.textContent;btn.disabled=true;btn.textContent='...';try{await fn()}catch(e){console.error(e);toast(e.message||'حدث خطأ',false)}btn.disabled=false;btn.textContent=o};
+let cfg={},projects=[];
+
+/* ---------- الدخول ---------- */
+$('#loginBtn').onclick=e=>busy(e.target,async()=>{$('#loginMsg').textContent='';try{await signInWithEmailAndPassword(auth,$('#email').value.trim(),$('#pass').value)}catch(err){$('#loginMsg').textContent='بيانات الدخول غير صحيحة'}});
+$('#pass').addEventListener('keydown',e=>{if(e.key==='Enter')$('#loginBtn').click()});
+$('#logout').onclick=()=>signOut(auth);
+onAuthStateChanged(auth,async u=>{
+  if(u&&u.uid===ADMIN_UID){$('#login').classList.add('hidden');$('#app').classList.remove('hidden');await load()}
+  else{if(u){await signOut(auth);$('#loginMsg').textContent='هذا الحساب غير مصرح له'}$('#app').classList.add('hidden');$('#login').classList.remove('hidden')}
+});
+
+/* ---------- تحميل ---------- */
+async function load(){
+  try{
+    const[s,p,v]=await Promise.all([getDoc(doc(db,'config','site')),getDocs(collection(db,'projects')),getDoc(doc(db,'stats','main'))]);
+    cfg=s.exists()?s.data():{};
+    projects=p.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.order||0)-(b.order||0));
+    $('#visits').value=v.exists()?v.data().visits:32100;
+    renderAll();
+  }catch(e){toast('تعذر التحميل: '+e.message,false)}
+}
+const saveCfg=async patch=>{await setDoc(doc(db,'config','site'),patch,{merge:true});Object.assign(cfg,patch);toast('تم الحفظ')};
+
+/* ---------- تبويبات ---------- */
+$('#tabs').onclick=e=>{const b=e.target.closest('.tb');if(!b)return;$$('.tb').forEach(x=>x.classList.toggle('on',x===b));$$('.tab').forEach(x=>x.classList.toggle('on',x.id==='t-'+b.dataset.t))};
+
+/* ---------- صفوف ديناميكية ---------- */
+const F={srvBox:[['icon','الأيقونة'],['title','العنوان'],['desc','الوصف',1]],itemBox:[['label','العنوان'],['value','القيمة'],['link','الرابط (اختياري)']],socBox:[['name','الاسم'],['icon','الأيقونة (fab fa-...)'],['url','الرابط'],['color','لون التحويم #hex']]};
+const rowHtml=(box,it)=>`<div class="card row space-y-2">${F[box].map(([k,ph,ta])=>ta?`<textarea class="inp" data-k="${k}" placeholder="${ph}" rows="2">${esc(it[k])}</textarea>`:`<input class="inp" data-k="${k}" placeholder="${ph}" value="${esc(it[k])}">`).join('')}<button class="btn2 !text-red-400" data-rm>حذف</button></div>`;
+const fill=(box,items)=>{$('#'+box).innerHTML=(items||[]).map(i=>rowHtml(box,i)).join('')};
+const read=box=>$$('#'+box+' .row').map(r=>Object.fromEntries([...r.querySelectorAll('[data-k]')].map(e=>[e.dataset.k,e.value.trim()]))).filter(o=>Object.values(o).some(Boolean));
+document.addEventListener('click',e=>{
+  if(e.target.matches('[data-rm]'))e.target.closest('.row').remove();
+  const a=e.target.closest('[data-add]');if(a)$('#'+a.dataset.add).insertAdjacentHTML('beforeend',rowHtml(a.dataset.add,{}));
+});
+
+/* ---------- Cloudinary ---------- */
+const pick=accept=>new Promise(res=>{const i=document.createElement('input');i.type='file';i.accept=accept;i.onchange=()=>res(i.files[0]);i.click()});
+async function upload(file,type){
+  const fd=new FormData();fd.append('file',file);fd.append('upload_preset',PRESET);
+  const r=await fetch(`https://api.cloudinary.com/v1_1/${CLOUD}/${type}/upload`,{method:'POST',body:fd});
+  const j=await r.json();if(!j.secure_url)throw new Error((j.error&&j.error.message)||'فشل الرفع');return j.secure_url;
+}
+
+/* ---------- المشاريع ---------- */
+$('#p_color').innerHTML=Object.entries(COLORS).map(([k,v])=>`<option value="${k}">${v}</option>`).join('');
+function renderProjects(){
+  $('#plist').innerHTML=projects.map(p=>`<div class="card flex gap-3 items-center"><img src="${esc(p.image)}" class="w-20 h-14 object-cover rounded-lg"><div class="flex-1 min-w-0"><b class="block truncate">${esc(p.title)}</b><span class="text-xs text-slate-300">${esc(p.tag)} · ترتيب ${p.order??0}${p.isNew?' · جديد':''}</span></div><button class="btn2" data-e="${p.id}">تعديل</button><button class="btn2 !text-red-400" data-d="${p.id}">حذف</button></div>`).join('')||'<p class="text-slate-400 text-center py-6">لا توجد مشاريع بعد — استخدم تبويب الأدوات لرفع مشاريع index.html</p>';
+}
+function openForm(p={}){
+  $('#pf').classList.remove('hidden');
+  $('#p_id').value=p.id||'';$('#p_title').value=p.title||'';$('#p_tag').value=p.tag||'';$('#p_color').value=p.color||'brand';
+  $('#p_desc').value=p.desc||'';$('#p_url').value=p.url||'';$('#p_image').value=p.image||'';$('#p_new').checked=!!p.isNew;
+  $('#p_order').value=p.order??(projects.reduce((m,x)=>Math.max(m,x.order||0),0)+1);prev();$('#pf').scrollIntoView({behavior:'smooth'});
+}
+const prev=()=>{const v=$('#p_image').value.trim(),i=$('#p_prev');i.src=v;i.classList.toggle('hidden',!v)};
+$('#p_image').oninput=prev;
+$('#addP').onclick=()=>openForm();
+$('#p_cancel').onclick=()=>$('#pf').classList.add('hidden');
+$('#p_up').onclick=e=>busy(e.target,async()=>{const f=await pick('image/*');if(!f)return;$('#p_image').value=await upload(f,'image');prev()});
+$('#p_save').onclick=e=>busy(e.target,async()=>{
+  const d={title:$('#p_title').value.trim(),tag:$('#p_tag').value.trim(),color:$('#p_color').value,desc:$('#p_desc').value.trim(),url:$('#p_url').value.trim(),image:$('#p_image').value.trim(),isNew:$('#p_new').checked,order:+$('#p_order').value||0};
+  if(!d.title||!d.url||!d.image)throw new Error('الاسم والرابط والصورة مطلوبة');
+  const id=$('#p_id').value;await setDoc(id?doc(db,'projects',id):doc(collection(db,'projects')),d);
+  $('#pf').classList.add('hidden');toast('تم حفظ المشروع');await load();
+});
+$('#plist').onclick=async e=>{
+  const ed=e.target.dataset.e,de=e.target.dataset.d;
+  if(ed)openForm(projects.find(p=>p.id===ed));
+  if(de&&confirm('حذف هذا المشروع نهائياً؟')){await deleteDoc(doc(db,'projects',de));toast('تم الحذف');await load()}
+};
+
+/* ---------- باقي الأقسام ---------- */
+function renderAll(){
+  renderProjects();
+  const h=cfg.hero||{},a=cfg.about||{},k=cfg.contact||{},v=cfg.videos||{};
+  $('#h_badge').value=h.badge||'';$('#h_name').value=h.name||'';$('#h_title').value=h.title||'';$('#h_bio').value=h.bio||'';$('#h_b1').value=h.btn1||'';$('#h_b2').value=h.btn2||'';
+  $('#a_title').value=a.title||'';$('#a_body').value=a.body||'';
+  fill('srvBox',cfg.services);
+  $('#c_title').value=k.title||'';$('#c_sub').value=k.sub||'';fill('itemBox',k.items);fill('socBox',k.socials);
+  $('#v_hero').value=v.hero||'';$('#v_show').value=v.showcase||'';
+}
+$('#saveHero').onclick=e=>busy(e.target,()=>saveCfg({hero:{badge:$('#h_badge').value.trim(),name:$('#h_name').value.trim(),title:$('#h_title').value.trim(),bio:$('#h_bio').value.trim(),btn1:$('#h_b1').value.trim(),btn2:$('#h_b2').value.trim()},about:{title:$('#a_title').value.trim(),body:$('#a_body').value.trim()}}));
+$('#saveSrv').onclick=e=>busy(e.target,()=>saveCfg({services:read('srvBox')}));
+$('#saveContact').onclick=e=>busy(e.target,()=>saveCfg({contact:{title:$('#c_title').value.trim(),sub:$('#c_sub').value.trim(),items:read('itemBox'),socials:read('socBox')}}));
+$('#saveVid').onclick=e=>busy(e.target,()=>saveCfg({videos:{hero:$('#v_hero').value.trim(),showcase:$('#v_show').value.trim()}}));
+$$('[data-vup]').forEach(b=>b.onclick=()=>busy(b,async()=>{const f=await pick('video/*');if(!f)return;$('#'+b.dataset.vup).value=await upload(f,'video')}));
+$('#saveVisits').onclick=e=>busy(e.target,async()=>{await setDoc(doc(db,'stats','main'),{visits:Math.max(0,+$('#visits').value||0)});toast('تم الحفظ')});
+
+/* ---------- رفع بيانات index.html ---------- */
+function parse(html){
+  const d=new DOMParser().parseFromString(html,'text/html');
+  const t=n=>n?n.textContent.replace(/\s+/g,' ').trim():'';
+  const h=n=>n?n.innerHTML.replace(/\s+/g,' ').trim():'';
+  const g=id=>d.getElementById(id);
+  const out={cfg:{},projects:[]};
+  out.projects=[...d.querySelectorAll('#projectsGrid article')].map((a,i)=>{
+    const tag=a.querySelector('h3+span');const m=(tag&&tag.className.match(/bg-(\w+)-900/))||[];
+    return{title:t(a.querySelector('h3')),tag:t(tag),color:COLORS[m[1]]?m[1]:'brand',desc:t(a.querySelector('p')),url:(a.querySelector('a[href^="http"]')||{}).href||'',image:(a.querySelector('img')||{}).src||'',isNew:!!a.querySelector('span.absolute'),order:i+1};
+  });
+  if(g('heroName'))out.cfg.hero={badge:t(g('heroBadge')),name:t(g('heroName')),title:h(g('heroTitle')),bio:t(g('heroBio')),btn1:t(g('btnWorks')),btn2:t(g('btnContact'))};
+  if(g('aboutBody'))out.cfg.about={title:t(g('aboutTitle')),body:h(g('aboutBody'))};
+  const sv=[...d.querySelectorAll('#servicesGrid > div')].map(x=>({icon:(x.querySelector('i')||{}).className||'',title:t(x.querySelector('h3')),desc:t(x.querySelector('p'))}));
+  if(sv.length)out.cfg.services=sv;
+  const items=[...d.querySelectorAll('#contactList > *')].map(x=>({label:t(x.querySelector('.text-xs')),value:t(x.querySelector('.font-bold')),link:x.tagName==='A'?x.getAttribute('href'):''}));
+  const socials=[...d.querySelectorAll('#socials a')].map(x=>({name:x.getAttribute('aria-label')||'',icon:(x.querySelector('i')||{}).className||'',url:x.getAttribute('href'),color:((x.className.match(/hover:bg-\[(#[0-9a-fA-F]+)\]/))||[])[1]||'#14b8a6'}));
+  if(g('contactTitle'))out.cfg.contact={title:t(g('contactTitle')),sub:t(g('contactSub')),items,socials};
+  const hv=d.querySelector('#hero-video source'),sv2=d.querySelector('#showcase-video source');
+  if(hv||sv2)out.cfg.videos={hero:hv?hv.getAttribute('src'):'',showcase:sv2?sv2.getAttribute('src'):''};
+  return out;
+}
+async function seed(html){
+  const r=parse(html);
+  if(!r.projects.length&&!r.cfg.services)throw new Error('لم أجد بيانات داخل index.html (ربما حُذفت)');
+  if(!confirm(`سيتم رفع ${r.projects.length} مشروع وباقي البيانات إلى Firebase واستبدال القديم المطابق. متابعة؟`))return;
+  const b=writeBatch(db);
+  b.set(doc(db,'config','site'),r.cfg,{merge:true});
+  r.projects.forEach((p,i)=>b.set(doc(db,'projects','seed-'+String(i+1).padStart(2,'0')),p));
+  await b.commit();
+  const st=await getDoc(doc(db,'stats','main'));
+  if(!st.exists())await setDoc(doc(db,'stats','main'),{visits:32100});
+  toast('تم الرفع بنجاح');await load();
+}
+$('#seedUrl').onclick=e=>busy(e.target,async()=>{const r=await fetch('index.html?'+Date.now());if(!r.ok)throw new Error('تعذر قراءة index.html — جرّب "اختيار ملف"');await seed(await r.text())});
+$('#seedFile').onclick=e=>busy(e.target,async()=>{const f=await pick('.html,text/html');if(f)await seed(await f.text())});
+</script>
+</body>
+</html>
