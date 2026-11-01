@@ -201,7 +201,7 @@
     </div>
 
     <!-- Hero Section -->
-    <header class="relative min-h-[80vh] flex items-center justify-center overflow-hidden grid-pattern">
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden grid-pattern">
         <div class="absolute inset-0 z-0 w-full h-full bg-[#020617]">
             <video id="hero-video" autoplay loop muted playsinline preload="metadata" class="smart-video w-full h-full object-cover object-center opacity-50">
                 <source src="https://res.cloudinary.com/dsxrjmcxs/video/upload/w_640,q_auto:eco,f_auto/v1784443019/hepkjca6gjpeux5jpoqw.mp4" type="video/mp4">
@@ -220,7 +220,7 @@
                 </div>
             </div>
 
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/80 border border-brand-500/20 text-brand-300 text-sm font-medium mb-3">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/80 border border-brand-500/20 text-brand-300 text-sm font-medium mb-3 backdrop-blur-md">
                 <span class="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span>
                 <span id="heroBadge">الموقع الشخصي للمطور</span>
             </div>
@@ -233,7 +233,7 @@
                   مطور مواقع ويب   <span class="text-transparent bg-clip-text bg-gradient-to-l from-brand-200 to-brand-500 font-bold">متقدمة</span>
             </p>
 
-            <p id="heroBio" class="text-slate-100 max-w-xl text-sm sm:text-base mb-6 leading-relaxed bg-gradient-to-r from-slate-800 to-slate-700 p-4 rounded-2xl border border-slate-600 shadow-lg">
+            <p id="heroBio" class="text-slate-100 max-w-xl text-sm sm:text-base mb-6 leading-relaxed bg-gradient-to-r from-slate-800 to-slate-700 p-4 rounded-2xl border border-slate-600 shadow-lg backdrop-blur-md">
                  طالب بكلية التجارة جامعة الزقازيق ومطور مستقل يسعى دائماً لتطوير البيئة المحيطة به والتقدم في العديد من المجالات وتقديم خدمات مميزة.
             </p>
 
@@ -248,12 +248,22 @@
         </div>
     </header>
 
-    <!-- الفيديو المدمج في الخلفية -->
-    <section class="relative w-full max-w-6xl mx-auto -mt-10 mb-2 z-10 reveal-on-scroll">
-        <div class="w-full aspect-video video-blend-edges">
-            <video id="showcase-video" controls playsinline preload="metadata" class="smart-video w-full h-full object-cover opacity-80 transition-opacity duration-500">
-                <source src="https://res.cloudinary.com/dsxrjmcxs/video/upload/q_auto:eco,f_auto/v1784440819/lwrmd0jkmgurvv6dtvlb.mp4" type="video/mp4">
-            </video>
+    <!-- فيديو العرض -->
+    <section class="relative w-full max-w-4xl mx-auto px-4 sm:px-6 mt-2 mb-8 z-10 reveal-on-scroll">
+        <div class="relative rounded-3xl p-[1.5px] bg-gradient-to-br from-brand-400/70 via-slate-700 to-brand-600/70 shadow-[0_0_60px_rgba(20,184,166,0.22)]">
+            <div class="rounded-[1.4rem] overflow-hidden bg-slate-950">
+                <div class="flex items-center gap-2 px-4 py-2.5 bg-slate-900/90 border-b border-slate-700/60">
+                    <span class="w-2.5 h-2.5 rounded-full bg-red-400/80"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-400/80"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400/80"></span>
+                    <span class="ms-2 text-[11px] sm:text-xs text-slate-400 font-medium flex items-center gap-1.5"><i class="fas fa-play-circle text-brand-400"></i> عرض سريع لأعمالي</span>
+                </div>
+                <div class="aspect-video">
+                    <video id="showcase-video" controls playsinline preload="metadata" class="smart-video w-full h-full object-cover">
+                        <source src="https://res.cloudinary.com/dsxrjmcxs/video/upload/q_auto:eco,f_auto/v1784440819/lwrmd0jkmgurvv6dtvlb.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -265,58 +275,30 @@
         <!-- ========================================== -->
         <section id="services" class="py-8 reveal-on-scroll scroll-mt-24">
             <div class="text-center mb-6">
-                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-100 mb-2">خدماتي</h2>
-                <div class="h-1 w-20 bg-brand-500 mx-auto rounded-full mb-3 opacity-80"></div>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-100 mb-4 leading-normal">خدماتي</h2>
+                <div class="h-1 w-20 bg-brand-500 mx-auto rounded-full mb-5 opacity-80"></div>
             </div>
 
-            <div id="servicesGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
-                <!-- خدمة 1 -->
-                <div class="portfolio-card p-4 sm:p-6 rounded-2xl flex flex-col items-center text-center">
-                    <div class="w-12 h-12 rounded-full bg-brand-900/50 text-brand-400 flex items-center justify-center text-lg mb-3 border border-brand-500/20 shadow-inner">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <h3 class="text-base sm:text-lg font-bold text-slate-100 mb-1.5">المتاجر الإلكترونية</h3>
-                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">بناء متاجر احترافية آمنة وسهلة الإدارة لعرض منتجاتك وزيادة مبيعاتك أونلاين.</p>
-                </div>
-                <!-- خدمة 2 -->
-                <div class="portfolio-card p-4 sm:p-6 rounded-2xl flex flex-col items-center text-center">
-                    <div class="w-12 h-12 rounded-full bg-brand-900/50 text-brand-400 flex items-center justify-center text-lg mb-3 border border-brand-500/20 shadow-inner">
-                        <i class="fas fa-building"></i>
-                    </div>
-                    <h3 class="text-base sm:text-lg font-bold text-slate-100 mb-1.5">الشركات والمؤسسات</h3>
-                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">تصميم مواقع للشركات، العيادات، والمطاعم لتعريف احترافي بخدماتك وبناء ثقة العملاء.</p>
-                </div>
-                <!-- خدمة 3 -->
-                <div class="portfolio-card p-4 sm:p-6 rounded-2xl flex flex-col items-center text-center">
-                    <div class="w-12 h-12 rounded-full bg-brand-900/50 text-brand-400 flex items-center justify-center text-lg mb-3 border border-brand-500/20 shadow-inner">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3 class="text-base sm:text-lg font-bold text-slate-100 mb-1.5">الأنظمة ولوحات التحكم</h3>
-                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">حلول برمجية مخصصة وأنظمة إدارية خاصة لتسهيل ومتابعة سير أعمالك بدقة.</p>
-                </div>
-                <!-- خدمة 4 -->
-                <div class="portfolio-card p-4 sm:p-6 rounded-2xl flex flex-col items-center text-center">
-                    <div class="w-12 h-12 rounded-full bg-brand-900/50 text-brand-400 flex items-center justify-center text-lg mb-3 border border-brand-500/20 shadow-inner">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="text-base sm:text-lg font-bold text-slate-100 mb-1.5">جودة ودعم مستمر</h3>
-                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">كود نظيف متوافق مع كافة الأجهزة، سرعة وأمان عالي، مع دعم فني مستمر بعد التسليم.</p>
-                </div>
-            </div>
+            <div id="servicesGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+</div>
         </section>
 
         <!-- قسم الإحصائيات -->
-        <section id="stats" class="py-4 reveal-on-scroll">
-            <div class="grid grid-cols-2 gap-3 sm:gap-6">
-                <div class="portfolio-card p-4 sm:p-6 rounded-2xl text-center">
-                    <div class="w-12 h-12 mx-auto rounded-full bg-brand-900/50 text-brand-400 flex items-center justify-center text-lg mb-2 border border-brand-500/20"><i class="fas fa-folder-open"></i></div>
-                    <div id="statProjects" class="text-3xl sm:text-5xl font-extrabold text-slate-100">0</div>
-                    <div class="text-xs sm:text-sm text-slate-400 mt-1">إجمالي مشاريعي</div>
+        <section id="stats" class="py-3 reveal-on-scroll">
+            <div class="portfolio-card rounded-2xl max-w-md mx-auto grid grid-cols-2 divide-x divide-x-reverse divide-slate-600/60 shadow-[0_0_25px_rgba(20,184,166,0.12)]">
+                <div class="flex items-center justify-center gap-2.5 sm:gap-3 py-3 px-2">
+                    <div class="w-9 h-9 shrink-0 rounded-full bg-brand-900/50 text-brand-400 flex items-center justify-center text-sm border border-brand-500/30"><i class="fas fa-folder-open"></i></div>
+                    <div class="leading-tight">
+                        <div id="statProjects" class="text-xl sm:text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-l from-brand-200 to-brand-500">0</div>
+                        <div class="text-[10px] sm:text-xs text-slate-400">إجمالي مشاريعي</div>
+                    </div>
                 </div>
-                <div class="portfolio-card p-4 sm:p-6 rounded-2xl text-center">
-                    <div class="w-12 h-12 mx-auto rounded-full bg-brand-900/50 text-brand-400 flex items-center justify-center text-lg mb-2 border border-brand-500/20"><i class="fas fa-eye"></i></div>
-                    <div id="statVisits" class="text-3xl sm:text-5xl font-extrabold text-slate-100">32,100</div>
-                    <div class="text-xs sm:text-sm text-slate-400 mt-1">إجمالي زوار البورتفوليو</div>
+                <div class="flex items-center justify-center gap-2.5 sm:gap-3 py-3 px-2">
+                    <div class="w-9 h-9 shrink-0 rounded-full bg-brand-900/50 text-brand-400 flex items-center justify-center text-sm border border-brand-500/30"><i class="fas fa-eye"></i></div>
+                    <div class="leading-tight">
+                        <div id="statVisits" class="text-xl sm:text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-l from-brand-200 to-brand-500">32,100</div>
+                        <div class="text-[10px] sm:text-xs text-slate-400">إجمالي الزوار</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -324,133 +306,13 @@
         <!-- قسم المشاريع -->
         <section id="portfolio" class="pt-8 pb-8 scroll-mt-24 border-t border-slate-800">
             <div class="text-center mb-6 reveal-on-scroll">
-                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-100 mb-2">أعمالي السابقة</h2>
-                <div class="h-1 w-20 bg-brand-500 mx-auto rounded-full mb-3 opacity-80"></div>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-100 mb-4 leading-normal">أعمالي السابقة</h2>
+                <div class="h-1 w-20 bg-brand-500 mx-auto rounded-full mb-5 opacity-80"></div>
                 <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">مجموعة من المنصات التفاعلية المخصصة التي قمت بتطويرها بالكامل واستضافتها بنجاح على سيرفرات سحابية.</p>
             </div>
 
             <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- بطاقة جديدة: Taxi AlpGo -->
-                <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll relative">
-                    <span class="absolute top-3 left-3 z-10 text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-brand-500 text-slate-950 shadow-[0_0_10px_rgba(20,184,166,0.5)]">جديد</span>
-                    <div class="relative aspect-video overflow-hidden border-b border-slate-700">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1786738438/lpvcfoqx38rsydftoeht.jpg" alt="Taxi AlpGo - خدمة نقل سياحي في ألمانيا والنمسا" loading="lazy" decoding="async" class="portfolio-image w-full h-full object-cover opacity-85">
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-lg font-bold text-slate-100">Taxi AlpGo</h3>
-                            <span class="text-xs px-2.5 py-1 rounded-full bg-orange-900/50 text-orange-300 border border-orange-700/50">نقل سياحي</span>
-                        </div>
-                        <p class="text-slate-300 text-sm mb-6 flex-grow">موقع خدمة تاكسي وليموزين فاخرة بين إنسبروك وميونخ وفرانكفورت وبرلين ومنطقة الألب، مع نظام حجز وخدمات نقل مطارات وتزلج، بواجهة ثلاث لغات.</p>
-                        <a href="https://taxi-alpgo.vercel.app/" target="_blank" rel="noopener" class="mt-auto w-full py-3 bg-brand-500 hover:bg-brand-400 text-slate-950 text-center rounded-xl transition-all duration-300 font-extrabold flex items-center justify-center gap-2 text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">
-                            زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- بطاقة 1 -->
-                <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
-                    <div class="relative aspect-video overflow-hidden border-b border-slate-700">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1777053979/db2pwzzdnakgowp9tx7u.jpg" alt="بوابة خدمات كلية التجارة بجامعة الزقازيق" loading="lazy" decoding="async" class="portfolio-image w-full h-full object-cover opacity-85">
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-lg font-bold text-slate-100">بوابة خدمات كلية التجارة</h3>
-                            <span class="text-xs px-2.5 py-1 rounded-full bg-brand-900/50 text-brand-300 border border-brand-700/50">جامعي</span>
-                        </div>
-                        <p class="text-slate-300 text-sm mb-6 flex-grow">منصة تفاعلية تخدم طلاب كلية التجارة بجامعة الزقازيق</p>
-                        <a href="https://faculty-of-commerce.vercel.app/" target="_blank" rel="noopener" class="mt-auto w-full py-3 bg-brand-500 hover:bg-brand-400 text-slate-950 text-center rounded-xl transition-all duration-300 font-extrabold flex items-center justify-center gap-2 text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">
-                            زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- بطاقة 2 -->
-                <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
-                    <div class="relative aspect-video overflow-hidden border-b border-slate-700">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1777053974/burcenkiplmzhevq730f.jpg" alt="موقع مسجد الرحمن لمواقيت الصلاة والأخبار" loading="lazy" decoding="async" class="portfolio-image w-full h-full object-cover opacity-85">
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-lg font-bold text-slate-100">موقع مسجد الرحمن</h3>
-                            <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-900/50 text-emerald-300 border border-emerald-700/50">منصة إسلامية</span>
-                        </div>
-                        <p class="text-slate-300 text-sm mb-6 flex-grow">تطبيق ويب خدمي مخصص لمواقيت الصلاة والأخبار لمجتمع مسجد الرحمن بـ Perstorp.</p>
-                        <a href="https://mosk-staden-perstorp.vercel.app/" target="_blank" rel="noopener" class="mt-auto w-full py-3 bg-brand-500 hover:bg-brand-400 text-slate-950 text-center rounded-xl transition-all duration-300 font-extrabold flex items-center justify-center gap-2 text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">
-                            زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- بطاقة 3 -->
-                <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
-                    <div class="relative aspect-video overflow-hidden border-b border-slate-700">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1777053975/fgtcwsg8heguqvtdvena.jpg" alt="منصة وظائف وخدمات الشرقية" loading="lazy" decoding="async" class="portfolio-image w-full h-full object-cover opacity-85">
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-lg font-bold text-slate-100">وظائف وخدمات الشرقية</h3>
-                            <span class="text-xs px-2.5 py-1 rounded-full bg-sky-900/50 text-sky-300 border border-sky-700/50">منصة وظائف</span>
-                        </div>
-                        <p class="text-slate-300 text-sm mb-6 flex-grow">منصة متكاملة تربط أصحاب الأعمال بالمستقلين والباحثين عن العمل على مستوى الشرقية.</p>
-                        <a href="https://sharqiya.vercel.app/" target="_blank" rel="noopener" class="mt-auto w-full py-3 bg-brand-500 hover:bg-brand-400 text-slate-950 text-center rounded-xl transition-all duration-300 font-extrabold flex items-center justify-center gap-2 text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">
-                            زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- بطاقة 4 -->
-                <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
-                    <div class="relative aspect-video overflow-hidden border-b border-slate-700">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_700,q_auto,f_auto/v1777053977/nrleaa5sbfvklzeqhhar.jpg" alt="السوق وياك منصة تسويق عقاري" loading="lazy" decoding="async" class="portfolio-image w-full h-full object-cover opacity-85">
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-lg font-bold text-slate-100">السوق وياك العقاري</h3>
-                            <span class="text-xs px-2.5 py-1 rounded-full bg-amber-900/50 text-amber-300 border border-amber-700/50">تسويق عقاري</span>
-                        </div>
-                        <p class="text-slate-300 text-sm mb-6 flex-grow">تطبيق ويب لعرض وتقييم العقارات والوحدات السكنية مع نظام تصفية وبحث ذكي.</p>
-                        <a href="https://real-estate-nine-kohl.vercel.app/" target="_blank" rel="noopener" class="mt-auto w-full py-3 bg-brand-500 hover:bg-brand-400 text-slate-950 text-center rounded-xl transition-all duration-300 font-extrabold flex items-center justify-center gap-2 text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">
-                            زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- بطاقة 5 -->
-                <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
-                    <div class="relative aspect-video overflow-hidden border-b border-slate-700">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_400,q_auto,f_auto/v1786100541/b3asxaiianef4kckpnln.png" alt="جامعة ستور متجر إلكتروني تسويقي" loading="lazy" decoding="async" class="portfolio-image w-full h-full object-cover opacity-85">
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-lg font-bold text-slate-100">جامعة ستور للتسويق</h3>
-                            <span class="text-xs px-2.5 py-1 rounded-full bg-pink-900/50 text-pink-300 border border-pink-700/50">متجر إلكتروني</span>
-                        </div>
-                        <p class="text-slate-300 text-sm mb-6 flex-grow">متجر تسويقي حديث مبسط لتسهيل عمليات البيع والطلب المباشر وتجربة الشراء.</p>
-                        <a href="https://gam3a-store.vercel.app/" target="_blank" rel="noopener" class="mt-auto w-full py-3 bg-brand-500 hover:bg-brand-400 text-slate-950 text-center rounded-xl transition-all duration-300 font-extrabold flex items-center justify-center gap-2 text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">
-                            زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- بطاقة 6 -->
-                <article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col reveal-on-scroll">
-                    <div class="relative aspect-video overflow-hidden border-b border-slate-700">
-                        <img src="https://res.cloudinary.com/dsxrjmcxs/image/upload/c_limit,w_400,q_auto,f_auto/v1786100553/indrwdrygklnimvnfzi5.png" alt="منصة تعليمية للثانوية العامة" loading="lazy" decoding="async" class="portfolio-image w-full h-full object-cover opacity-85">
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-lg font-bold text-slate-100">منصة تعليمية</h3>
-                            <span class="text-xs px-2.5 py-1 rounded-full bg-purple-900/50 text-purple-300 border border-purple-700/50">منصة تعليمية</span>
-                        </div>
-                        <p class="text-slate-300 text-sm mb-6 flex-grow">نظام تعليمي للثانوية العامة يعتمد على عرض المحاضرات والاختبارات التفاعلية أونلاين.</p>
-                        <a href="https://natega-rose.vercel.app/" target="_blank" rel="noopener" class="mt-auto w-full py-3 bg-brand-500 hover:bg-brand-400 text-slate-950 text-center rounded-xl transition-all duration-300 font-extrabold flex items-center justify-center gap-2 text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">
-                            زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i>
-                        </a>
-                    </div>
-                </article>
-
-            </div>
+</div>
         </section>
 
         <!-- قسم التواصل -->
@@ -663,7 +525,7 @@ function renderProjects(list){
 function renderCfg(c){
   const h=c.hero||{};set('heroBadge',h.badge);set('heroName',h.name);html('heroTitle',h.title);set('heroBio',h.bio);set('btnWorks',h.btn1);set('btnContact',h.btn2);
   const a=c.about||{};set('aboutTitle',a.title);html('aboutBody',a.body);
-  if(c.services&&c.services.length)$('servicesGrid').innerHTML=c.services.map(x=>`<div class="portfolio-card p-4 sm:p-6 rounded-2xl flex flex-col items-center text-center"><div class="w-12 h-12 rounded-full bg-brand-900/50 text-brand-400 flex items-center justify-center text-lg mb-3 border border-brand-500/20 shadow-inner"><i class="${ico(x.icon)}"></i></div><h3 class="text-base sm:text-lg font-bold text-slate-100 mb-1.5">${esc(x.title)}</h3><p class="text-xs sm:text-sm text-slate-300 leading-relaxed">${esc(x.desc)}</p></div>`).join('');
+  if(c.services&&c.services.length)$('servicesGrid').innerHTML=c.services.map(x=>`<div class="portfolio-card p-3 sm:p-4 rounded-2xl flex flex-col items-center text-center"><div class="w-10 h-10 rounded-full bg-brand-900/50 text-brand-400 flex items-center justify-center text-base mb-2 border border-brand-500/20 shadow-inner"><i class="${ico(x.icon)}"></i></div><h3 class="text-sm sm:text-base font-bold text-slate-100 mb-1">${esc(x.title)}</h3><p class="text-[11px] sm:text-xs text-slate-300 leading-snug">${esc(x.desc)}</p></div>`).join('');
   const k=c.contact||{};set('contactTitle',k.title);set('contactSub',k.sub);
   if(k.items&&k.items.length)$('contactList').innerHTML=k.items.map(i=>{const wa=/wa\.me/.test(i.link||'');const inner=`<div class="w-10 h-10 rounded-xl ${wa?'bg-green-500/20 text-green-400':'bg-brand-500/20 text-brand-400'} flex items-center justify-center text-lg"><i class="${wa?'fab fa-whatsapp':'fas fa-map-marker-alt'}"></i></div><div><span class="text-xs text-slate-400 block">${esc(i.label)}</span><span class="font-bold text-slate-100 text-sm sm:text-base">${esc(i.value)}</span></div>`;return i.link?`<a href="${esc(url(i.link))}" target="_blank" rel="noopener" class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/40 hover:bg-slate-900/80 border border-slate-700 hover:border-brand-500/50 transition-all shadow-sm">${inner}</a>`:`<div class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/40 border border-slate-700 shadow-sm">${inner}</div>`}).join('');
   if(k.socials&&k.socials.length)$('socials').innerHTML=k.socials.map(x=>`<a href="${esc(url(x.url))}" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-[${hex(x.color)}] hover:text-white flex items-center justify-center text-slate-300 transition-all border border-slate-600 shadow-md" aria-label="${esc(x.name)}"><i class="${ico(x.icon)}"></i></a>`).join('');
