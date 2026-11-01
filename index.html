@@ -183,9 +183,22 @@
             visibility: visible;
             transform: translateY(0);
         }
-    </style>
+    
+    .led-bar{position:sticky;top:0;z-index:60;height:8px;overflow:hidden;background-color:#020617;background-image:repeating-linear-gradient(to right,rgba(45,212,191,.16) 0 2px,transparent 2px 6px);border-bottom:1px solid rgba(45,212,191,.15)}
+    .led-bar i{position:absolute;top:0;bottom:0;width:26%;mix-blend-mode:screen;box-shadow:0 0 14px 3px rgba(45,212,191,.65);will-change:transform;animation:ledL 3.6s ease-in-out infinite}
+    .led-bar i:first-child{left:0;background:linear-gradient(to right,transparent,#14b8a6 60%,#ccfbf1)}
+    .led-bar i:last-child{right:0;background:linear-gradient(to left,transparent,#14b8a6 60%,#ccfbf1);animation-name:ledR}
+    @keyframes ledL{0%,100%{transform:translateX(0)}50%{transform:translateX(142%)}}
+    @keyframes ledR{0%,100%{transform:translateX(0)}50%{transform:translateX(-142%)}}
+    @media (prefers-reduced-motion:reduce){.led-bar i{animation:none}}
+    .led-divider{height:2px;width:70%;max-width:640px;margin:0 auto;border-radius:9999px;background:linear-gradient(to right,transparent,rgba(45,212,191,.9),transparent);box-shadow:0 0 12px rgba(45,212,191,.45)}
+  </style>
+    <script>
+    (function(){var d={"@context":"https://schema.org","@type":"Person","name":"شهاب طارق صلاح","alternateName":["Shehab Tarek","شهاب طارق"],"jobTitle":"مطور مواقع مستقل","description":"مطور مواقع مستقل وطالب بكلية التجارة جامعة الزقازيق، بخبرة أكثر من عامين في بناء المواقع وأكثر من 4 أعوام في إدخال وتحليل البيانات، بجانب الجرافيك ديزاين والمونتاج وإدارة المواقع","url":location.origin+location.pathname,"affiliation":{"@type":"CollegeOrUniversity","name":"جامعة الزقازيق"},"knowsAbout":["تطوير المواقع","إدخال البيانات","تحليل البيانات","الجرافيك ديزاين","المونتاج وتعديل الفيديو","إدارة المواقع"],"sameAs":["https://www.tiktok.com/@shehab_tarek_1","https://www.linkedin.com/in/shehab-tarek-435684380","https://www.facebook.com/share/1CWMh7BYxU/","https://www.instagram.com/shehab_tarek1"]};var e=document.createElement("script");e.type="application/ld+json";e.text=JSON.stringify(d);document.head.appendChild(e)})();
+    </script>
 </head>
 <body class="antialiased selection:bg-brand-500 selection:text-slate-900 relative">
+    <div class="led-bar" aria-hidden="true"><i></i><i></i></div>
 
     <!-- زر العودة للأعلى -->
     <button id="backToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 z-50 bg-brand-600 hover:bg-brand-500 text-white w-12 h-12 rounded-2xl shadow-[0_0_20px_rgba(20,184,166,0.3)] flex items-center justify-center text-xl border border-brand-400/50 focus:outline-none" aria-label="العودة للأعلى">
@@ -234,7 +247,7 @@
             </p>
 
             <p id="heroBio" class="text-slate-100 max-w-xl text-sm sm:text-base mb-6 leading-relaxed bg-gradient-to-r from-slate-800 to-slate-700 p-4 rounded-2xl border border-slate-600 shadow-lg backdrop-blur-md">
-                 طالب بكلية التجارة جامعة الزقازيق ومطور مستقل يسعى دائماً لتطوير البيئة المحيطة به والتقدم في العديد من المجالات وتقديم خدمات مميزة.
+                مطور مواقع مستقل وطالب بكلية التجارة جامعة الزقازيق، بخبرة أكثر من عامين في بناء المواقع وأكثر من 4 أعوام في إدخال وتحليل البيانات، بجانب الجرافيك ديزاين والمونتاج وإدارة المواقع
             </p>
 
             <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
@@ -247,25 +260,6 @@
             </div>
         </div>
     </header>
-
-    <!-- فيديو العرض -->
-    <section class="relative w-full max-w-4xl mx-auto px-4 sm:px-6 mt-2 mb-8 z-10 reveal-on-scroll">
-        <div class="relative rounded-3xl p-[1.5px] bg-gradient-to-br from-brand-400/70 via-slate-700 to-brand-600/70 shadow-[0_0_60px_rgba(20,184,166,0.22)]">
-            <div class="rounded-[1.4rem] overflow-hidden bg-slate-950">
-                <div class="flex items-center gap-2 px-4 py-2.5 bg-slate-900/90 border-b border-slate-700/60">
-                    <span class="w-2.5 h-2.5 rounded-full bg-red-400/80"></span>
-                    <span class="w-2.5 h-2.5 rounded-full bg-amber-400/80"></span>
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400/80"></span>
-                    <span class="ms-2 text-[11px] sm:text-xs text-slate-400 font-medium flex items-center gap-1.5"><i class="fas fa-play-circle text-brand-400"></i> عرض سريع لأعمالي</span>
-                </div>
-                <div class="aspect-video">
-                    <video id="showcase-video" controls playsinline preload="metadata" class="smart-video w-full h-full object-cover">
-                        <source src="https://res.cloudinary.com/dsxrjmcxs/video/upload/q_auto:eco,f_auto/v1784440819/lwrmd0jkmgurvv6dtvlb.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Main Content Container -->
     <main class="max-w-6xl mx-auto px-6 relative z-10 pb-24 pt-0">
@@ -282,6 +276,8 @@
             <div id="servicesGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
 </div>
         </section>
+
+        <div class="led-divider" aria-hidden="true"></div>
 
         <!-- قسم الإحصائيات -->
         <section id="stats" class="py-3 reveal-on-scroll">
@@ -303,8 +299,29 @@
             </div>
         </section>
 
+        <!-- فيديو العرض -->
+    <section class="relative w-full max-w-4xl mx-auto py-6 z-10 reveal-on-scroll">
+        <div class="relative rounded-3xl p-[1.5px] bg-gradient-to-br from-brand-400/70 via-slate-700 to-brand-600/70 shadow-[0_0_60px_rgba(20,184,166,0.22)]">
+            <div class="rounded-[1.4rem] overflow-hidden bg-slate-950">
+                <div class="flex items-center gap-2 px-4 py-2.5 bg-slate-900/90 border-b border-slate-700/60">
+                    <span class="w-2.5 h-2.5 rounded-full bg-red-400/80"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-400/80"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400/80"></span>
+                    <span class="ms-2 text-[11px] sm:text-xs text-slate-400 font-medium flex items-center gap-1.5"><i class="fas fa-play-circle text-brand-400"></i> عرض سريع لأعمالي</span>
+                </div>
+                <div class="aspect-video">
+                    <video id="showcase-video" controls playsinline preload="metadata" class="smart-video w-full h-full object-cover">
+                        <source src="https://res.cloudinary.com/dsxrjmcxs/video/upload/q_auto:eco,f_auto/v1784440819/lwrmd0jkmgurvv6dtvlb.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <div class="led-divider" aria-hidden="true"></div>
+
         <!-- قسم المشاريع -->
-        <section id="portfolio" class="pt-8 pb-8 scroll-mt-24 border-t border-slate-800">
+        <section id="portfolio" class="pt-8 pb-8 scroll-mt-24">
             <div class="text-center mb-6 reveal-on-scroll">
                 <h2 class="text-3xl md:text-5xl font-extrabold text-slate-100 mb-4 leading-normal">أعمالي السابقة</h2>
                 <div class="h-1 w-20 bg-brand-500 mx-auto rounded-full mb-5 opacity-80"></div>
@@ -316,7 +333,8 @@
         </section>
 
         <!-- قسم التواصل -->
-        <section id="contact" class="py-8 border-t border-slate-800 scroll-mt-24">
+        <div class="led-divider" aria-hidden="true"></div>
+        <section id="contact" class="py-8 scroll-mt-24">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
 
                 <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-700 border border-brand-500/20 shadow-[0_10px_30px_rgba(20,184,166,0.1)] rounded-3xl p-5 sm:p-6 flex flex-col justify-center reveal-on-scroll">
@@ -520,7 +538,7 @@ const html=(id,t)=>{const e=$(id);if(e&&t)e.innerHTML=t};
 function countUp(el,to){if(!el)return;to=+to||0;const t0=performance.now();(function f(t){const k=Math.min((t-t0)/1200,1);el.textContent=Math.round(to*(1-Math.pow(1-k,3))).toLocaleString('en-US');if(k<1)requestAnimationFrame(f)})(t0)}
 function vid(id,src){const v=$(id),s=v&&v.querySelector('source');if(!s||!src||s.getAttribute('src')===src)return;s.src=src;if(id==='hero-video')v.defaultPlaybackRate=.5;v.load()}
 function renderProjects(list){
-  $('projectsGrid').innerHTML=list.map(p=>{const c=col(p.color);return `<article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col relative">${p.isNew?'<span class="absolute top-3 left-3 z-10 text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-brand-500 text-slate-950 shadow-[0_0_10px_rgba(20,184,166,0.5)]">جديد</span>':''}<div class="relative aspect-video overflow-hidden border-b border-slate-700"><img src="${esc(opt(p.image,700))}" alt="${esc(p.title)}" loading="lazy" decoding="async" class="portfolio-image w-full h-full object-cover opacity-85"></div><div class="p-6 flex-grow flex flex-col"><div class="flex justify-between items-center mb-3"><h3 class="text-lg font-bold text-slate-100">${esc(p.title)}</h3><span class="text-xs px-2.5 py-1 rounded-full bg-${c}-900/50 text-${c}-300 border border-${c}-700/50">${esc(p.tag)}</span></div><p class="text-slate-300 text-sm mb-6 flex-grow">${esc(p.desc)}</p><a href="${esc(url(p.url))}" target="_blank" rel="noopener" class="mt-auto w-full py-3 bg-brand-500 hover:bg-brand-400 text-slate-950 text-center rounded-xl transition-all duration-300 font-extrabold flex items-center justify-center gap-2 text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i></a></div></article>`}).join('');
+  $('projectsGrid').innerHTML=list.map(p=>{const c=col(p.color);return `<article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col relative">${p.isNew?'<span class="absolute top-3 left-3 z-10 text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-brand-500 text-slate-950 shadow-[0_0_10px_rgba(20,184,166,0.5)]">جديد</span>':''}<div class="relative aspect-video overflow-hidden border-b border-slate-700"><img src="${esc(opt(p.image,700))}" alt="${esc(p.title)}" loading="lazy" decoding="async" class="portfolio-image w-full h-full object-cover opacity-85"></div><div class="p-4 flex-grow flex flex-col"><div class="flex justify-between items-center mb-2"><h3 class="text-lg font-bold text-slate-100">${esc(p.title)}</h3><span class="text-xs px-2.5 py-1 rounded-full bg-${c}-900/50 text-${c}-300 border border-${c}-700/50">${esc(p.tag)}</span></div><p class="text-slate-300 text-sm mb-4 flex-grow leading-relaxed">${esc(p.desc)}</p><a href="${esc(url(p.url))}" target="_blank" rel="noopener" class="mt-auto w-full py-2.5 bg-brand-500 hover:bg-brand-400 text-slate-950 text-center rounded-xl transition-all duration-300 font-extrabold flex items-center justify-center gap-2 text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i></a></div></article>`}).join('');
 }
 function renderCfg(c){
   const h=c.hero||{};set('heroBadge',h.badge);set('heroName',h.name);html('heroTitle',h.title);set('heroBio',h.bio);set('btnWorks',h.btn1);set('btnContact',h.btn2);
