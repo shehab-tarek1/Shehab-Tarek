@@ -164,11 +164,10 @@
             contain: layout paint;
         }
 
-        /* === إصلاح: تأجيل حساب الـ layout/paint للأقسام تحت الفولد
-           لتقليل العبء أثناء السكرول === */
-        #services, #portfolio, #contact {
+        /* تأجيل المعالجة للأقسام البعيدة فقط لتفادي تشنج بداية الصفحة */
+        #portfolio, #contact {
             content-visibility: auto;
-            contain-intrinsic-size: 1px 1200px;
+            contain-intrinsic-size: 1px 800px;
         }
 
         #backToTopBtn {
@@ -330,7 +329,15 @@
             </div>
 
             <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-</div>
+            </div>
+
+            <!-- زر عرض المزيد من المشاريع -->
+            <div id="loadMoreWrap" class="mt-8 text-center hidden">
+                <button id="loadMoreBtn" type="button" class="px-8 py-3 bg-gradient-to-r from-brand-600 to-slate-700 hover:from-brand-500 hover:to-slate-600 text-white font-bold rounded-2xl border border-brand-400/40 shadow-[0_0_20px_rgba(20,184,166,0.25)] hover:shadow-[0_0_25px_rgba(20,184,166,0.4)] transition-all duration-300 inline-flex items-center gap-2">
+                    <span>عرض المزيد من المشاريع</span>
+                    <i class="fas fa-chevron-down text-brand-300"></i>
+                </button>
+            </div>
         </section>
 
         <!-- قسم التواصل -->
@@ -472,20 +479,14 @@
         }
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
-        // 2. المراقب الشامل
+        // 2. المراقب الشامل المحسن لسلاسة السكرول
         document.addEventListener("DOMContentLoaded", () => {
-            const heroVideo = document.getElementById('hero-video');
-            if (heroVideo) heroVideo.playbackRate = 0.5;
-
-            // === إصلاح: throttle لمراقب زر العودة للأعلى عبر requestAnimationFrame
-            // بدل ما يشتغل على كل حدث scroll مباشرة (كان بيزود العبء أثناء السحب) ===
             const scrollObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const el = entry.target;
                         el.classList.add('active');
                         observer.unobserve(el);
-                        // إلغاء حجز طبقة GPU بعد انتهاء الأنيميشن لتخفيف الحمل
                         el.addEventListener('transitionend', () => {
                             el.style.willChange = 'auto';
                         }, { once: true });
@@ -495,17 +496,16 @@
 
             document.querySelectorAll('.reveal-on-scroll').forEach(el => scrollObserver.observe(el));
 
-            const videos = document.querySelectorAll('.smart-video');
-            const videoObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if(entry.target.id === 'hero-video') entry.target.play().catch(()=>console.log("Auto-play prevented"));
-                    } else {
-                        entry.target.pause();
-                    }
-                });
-            }, { threshold: 0.05 });
-            videos.forEach(video => videoObserver.observe(video));
+            // مراقبة فيديو الهيرو فقط بدون صراع مع فيديو العرض
+            const heroVid = document.getElementById('hero-video');
+            if (heroVid) {
+                new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) heroVid.play().catch(()=>{});
+                        else heroVid.pause();
+                    });
+                }, { threshold: 0.05 }).observe(heroVid);
+            }
 
             // 3. مراقب زر العودة للأعلى (مع throttle عبر rAF لتخفيف الحمل أثناء السكرول)
             const backToTopBtn = document.getElementById('backToTopBtn');
@@ -559,8 +559,30 @@ const set=(id,t)=>{const e=$(id);if(e&&t)e.textContent=t};
 const html=(id,t)=>{const e=$(id);if(e&&t)e.innerHTML=t};
 function countUp(el,to){if(!el)return;to=+to||0;const t0=performance.now();(function f(t){const k=Math.min((t-t0)/1200,1);el.textContent=Math.round(to*(1-Math.pow(1-k,3))).toLocaleString('en-US');if(k<1)requestAnimationFrame(f)})(t0)}
 function vid(id,src){const v=$(id),s=v&&v.querySelector('source');if(!s||!src||s.getAttribute('src')===src)return;s.src=src;if(id==='hero-video'){v.defaultPlaybackRate=.5;const m=src.match(/^(.*\/upload\/)(?:[^\/]*\/)?(v\d+\/.+)\.\w+$/);if(m)v.poster=m[1]+'so_0,w_640,q_auto/'+m[2]+'.jpg'}v.load()}
+let _allProjects = [], _shownCount = 0;
+function createProjectCard(p){
+  const c=col(p.color);
+  return `<article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col relative reveal-on-scroll active">${p.isNew?'<span class="absolute top-3 left-3 z-10 text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-brand-500 text-slate-950 shadow-[0_0_10px_rgba(20,184,166,0.5)]">جديد</span>':''}<div class="relative aspect-video overflow-hidden border-b border-slate-700"><img src="${esc(opt(p.image,700))}" alt="${esc(p.title)}" loading="lazy" decoding="async" class="portfolio-image w-full h-full object-cover opacity-85"></div><div class="p-4 flex-grow flex flex-col"><div class="flex justify-between items-center mb-2"><h3 class="text-lg font-bold text-slate-100">${esc(p.title)}</h3><span class="text-xs px-2.5 py-1 rounded-full bg-${c}-900/50 text-${c}-300 border border-${c}-700/50">${esc(p.tag)}</span></div><p class="text-slate-300 text-sm mb-4 flex-grow leading-relaxed">${esc(p.desc)}</p><a href="${esc(url(p.url))}" target="_blank" rel="noopener" class="mt-auto w-full py-2.5 bg-brand-500 hover:bg-brand-400 text-slate-950 text-center rounded-xl transition-all duration-300 font-extrabold flex items-center justify-center gap-2 text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i></a></div></article>`;
+}
+function showNextProjects(){
+  const next = _allProjects.slice(_shownCount, _shownCount + 4);
+  if(next.length){
+    $('projectsGrid').insertAdjacentHTML('beforeend', next.map(createProjectCard).join(''));
+    _shownCount += next.length;
+  }
+  const wrap = $('loadMoreWrap');
+  if(wrap) wrap.classList.toggle('hidden', _shownCount >= _allProjects.length);
+}
 function renderProjects(list){
-  $('projectsGrid').innerHTML=list.map(p=>{const c=col(p.color);return `<article class="portfolio-card group rounded-2xl overflow-hidden flex flex-col relative">${p.isNew?'<span class="absolute top-3 left-3 z-10 text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-brand-500 text-slate-950 shadow-[0_0_10px_rgba(20,184,166,0.5)]">جديد</span>':''}<div class="relative aspect-video overflow-hidden border-b border-slate-700"><img src="${esc(opt(p.image,700))}" alt="${esc(p.title)}" loading="lazy" decoding="async" class="portfolio-image w-full h-full object-cover opacity-85"></div><div class="p-4 flex-grow flex flex-col"><div class="flex justify-between items-center mb-2"><h3 class="text-lg font-bold text-slate-100">${esc(p.title)}</h3><span class="text-xs px-2.5 py-1 rounded-full bg-${c}-900/50 text-${c}-300 border border-${c}-700/50">${esc(p.tag)}</span></div><p class="text-slate-300 text-sm mb-4 flex-grow leading-relaxed">${esc(p.desc)}</p><a href="${esc(url(p.url))}" target="_blank" rel="noopener" class="mt-auto w-full py-2.5 bg-brand-500 hover:bg-brand-400 text-slate-950 text-center rounded-xl transition-all duration-300 font-extrabold flex items-center justify-center gap-2 text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">زيارة المنصة الرسمية <i class="fas fa-external-link-alt text-xs"></i></a></div></article>`}).join('');
+  _allProjects = list || [];
+  _shownCount = 0;
+  $('projectsGrid').innerHTML = '';
+  showNextProjects();
+  const btn = $('loadMoreBtn');
+  if(btn && !btn.dataset.bound){
+    btn.dataset.bound = 'true';
+    btn.addEventListener('click', showNextProjects);
+  }
 }
 function renderCfg(c){
   const h=c.hero||{};set('heroBadge',h.badge);set('heroName',h.name);html('heroTitle',h.title);set('heroBio',h.bio);set('btnWorks',h.btn1);set('btnContact',h.btn2);
@@ -581,7 +603,7 @@ try{const ch=JSON.parse(localStorage.getItem('sh_cache')||'null');if(ch)apply(ch
     apply(cfg,list);
     try{localStorage.setItem('sh_cache',JSON.stringify({cfg,projects:list}))}catch(e){}
   }catch(e){console.warn('firebase',e)}
-  countUp($('statProjects'),$('projectsGrid').children.length);
+  countUp($('statProjects'), _allProjects.length || $('projectsGrid').children.length);
   const r=doc(db,'stats','main');
   try{await updateDoc(r,{visits:increment(1)})}catch(e){console.warn('visit',e)}
   try{const v=await getDoc(r);if(v.exists())countUp($('statVisits'),v.data().visits)}catch(e){}
@@ -589,3 +611,4 @@ try{const ch=JSON.parse(localStorage.getItem('sh_cache')||'null');if(ch)apply(ch
     </script>
 </body>
 </html>
+
