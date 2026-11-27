@@ -57,7 +57,7 @@
     <link rel="preconnect" href="https://res.cloudinary.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-    <!-- خط Cairo من Google Fonts -->
+    <!-- خط Cairo من Google Fonts (أسرع وأضمن من الملفات المحلية) -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap">
 
     <!-- Font Awesome -->
@@ -81,9 +81,8 @@
                               linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
         }
 
-        /* تعديل بطاقات المشاريع والخدمات لتعمل بالتدرج الممركز */
         .portfolio-card {
-            background: radial-gradient(circle at center, #334155 0%, #0f172a 100%);
+            background: linear-gradient(to right, #1e293b, #334155);
             border: 1px solid rgba(51, 65, 85, 0.8);
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
         }
@@ -123,6 +122,9 @@
             background: linear-gradient(to bottom, rgba(2, 6, 23, 0.3) 0%, rgba(2, 6, 23, 0.9) 100%);
         }
 
+        /* === إصلاح: استبدال mask-image (تكلفة رسم عالية جدًا على الموبايل)
+           بتدرج علوي/سفلي عادي بنفس التأثير البصري لكن بدون إعادة حساب mask
+           في كل فريم أثناء السكرول === */
         .video-blend-edges {
             position: relative;
             isolation: isolate;
@@ -147,17 +149,22 @@
             background: linear-gradient(to top, #020617 0%, transparent 100%);
         }
 
+        /* === إصلاح: عزل الفيديوهات في layer خاص بها (GPU compositing)
+           بدل ما تترسم مع باقي الصفحة أثناء السكرول === */
         .smart-video {
             will-change: transform;
             transform: translateZ(0);
             backface-visibility: hidden;
         }
 
+        /* === إصلاح: تخفيف حجم/تكلفة الـ radial-glow اللي كانت بتترسم
+           باستمرار فوق الفيديو أثناء الحركة === */
         .radial-glow {
             transform: translateZ(0);
             contain: layout paint;
         }
 
+        /* تأجيل المعالجة للأقسام البعيدة فقط لتفادي تشنج بداية الصفحة */
         #portfolio, #contact {
             content-visibility: auto;
             contain-intrinsic-size: 1px 800px;
@@ -174,7 +181,7 @@
             visibility: visible;
             transform: translateY(0);
         }
-
+    
     .led-bar{position:sticky;top:0;z-index:60;height:8px;overflow:hidden;background-color:#020617;background-image:repeating-linear-gradient(to right,rgba(45,212,191,.16) 0 2px,transparent 2px 6px);border-bottom:1px solid rgba(45,212,191,.15)}
     .led-bar i{position:absolute;top:0;bottom:0;width:26%;mix-blend-mode:screen;box-shadow:0 0 14px 3px rgba(45,212,191,.65);will-change:transform;animation:ledL 3.6s ease-in-out infinite}
     .led-bar i:first-child{left:0;background:linear-gradient(to right,transparent,#14b8a6 60%,#ccfbf1)}
@@ -236,15 +243,15 @@
                   مطور مواقع ويب   <span class="text-transparent bg-clip-text bg-gradient-to-l from-brand-200 to-brand-500 font-bold">متقدمة</span>
             </p>
 
-            <p id="heroBio" class="text-slate-100 max-w-xl text-sm sm:text-base mb-6 leading-relaxed bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-700 via-slate-800 to-slate-900 p-4 rounded-2xl border border-slate-600 shadow-lg backdrop-blur-md">
+            <p id="heroBio" class="text-slate-100 max-w-xl text-sm sm:text-base mb-6 leading-relaxed bg-gradient-to-r from-slate-800 to-slate-700 p-4 rounded-2xl border border-slate-600 shadow-lg backdrop-blur-md">
                 مطور مواقع مستقل وطالب بكلية التجارة جامعة الزقازيق، بخبرة أكثر من عامين في بناء المواقع وأكثر من 4 أعوام في إدخال وتحليل البيانات، بجانب الجرافيك ديزاين والمونتاج وإدارة المواقع
             </p>
 
             <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-                <a id="btnWorks" href="#portfolio" class="px-8 py-2.5 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-500 via-brand-600 to-slate-700 hover:from-brand-400 hover:via-brand-500 hover:to-slate-600 text-white transition-all duration-300 rounded-xl font-bold shadow-[0_0_15px_rgba(20,184,166,0.4)] flex items-center justify-center gap-2 relative overflow-hidden">
+                <a id="btnWorks" href="#portfolio" class="px-8 py-2.5 bg-gradient-to-r from-brand-600 to-slate-500 hover:from-brand-500 hover:to-slate-400 text-white transition-all duration-300 rounded-xl font-bold shadow-[0_0_15px_rgba(20,184,166,0.4)] flex items-center justify-center gap-2 relative overflow-hidden">
                     نماذج الأعمال السابقة
                 </a>
-                <a id="btnContact" href="#contact" class="px-8 py-2.5 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-700 via-slate-800 to-slate-900 hover:from-slate-600 hover:via-slate-700 hover:to-slate-800 text-white border border-slate-600 hover:border-slate-500 transition-all duration-300 rounded-xl font-medium flex items-center justify-center gap-2 shadow-lg">
+                <a id="btnContact" href="#contact" class="px-8 py-2.5 bg-gradient-to-r from-slate-800 to-slate-700 hover:from-slate-700 hover:to-slate-600 text-white border border-slate-600 hover:border-slate-500 transition-all duration-300 rounded-xl font-medium flex items-center justify-center gap-2 shadow-lg">
                     للتواصل
                 </a>
             </div>
@@ -255,7 +262,9 @@
     <main class="max-w-6xl mx-auto px-6 relative z-10 pb-24 pt-0">
         <div class="pt-4"><div class="led-divider" aria-hidden="true"></div></div>
 
-        <!-- قسم الخدمات -->
+        <!-- ========================================== -->
+        <!-- قسم الخدمات المحدث (4 بطاقات مستوحاة من الصورة) -->
+        <!-- ========================================== -->
         <section id="services" class="py-8 reveal-on-scroll scroll-mt-24">
             <div class="text-center mb-6">
                 <h2 class="text-3xl md:text-5xl font-extrabold text-slate-100 mb-4 leading-normal">خدماتي</h2>
@@ -263,7 +272,7 @@
             </div>
 
             <div id="servicesGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-            </div>
+</div>
         </section>
 
         <div class="led-divider" aria-hidden="true"></div>
@@ -289,25 +298,25 @@
         </section>
 
         <!-- فيديو العرض -->
-        <section class="relative w-full max-w-4xl mx-auto py-6 z-10 reveal-on-scroll">
-            <div class="relative rounded-3xl p-[1.5px] bg-gradient-to-br from-brand-400/70 via-slate-700 to-brand-600/70 shadow-[0_0_60px_rgba(20,184,166,0.22)]">
-                <div class="rounded-[1.4rem] overflow-hidden bg-slate-950">
-                    <div class="flex items-center gap-2 px-4 py-2.5 bg-slate-900/90 border-b border-slate-700/60">
-                        <span class="w-2.5 h-2.5 rounded-full bg-red-400/80"></span>
-                        <span class="w-2.5 h-2.5 rounded-full bg-amber-400/80"></span>
-                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400/80"></span>
-                        <span class="ms-2 text-[11px] sm:text-xs text-slate-400 font-medium flex items-center gap-1.5"><i class="fas fa-play-circle text-brand-400"></i> عرض سريع لأعمالي</span>
-                    </div>
-                    <div class="aspect-video relative">
-                        <video id="showcase-video" muted loop playsinline preload="none" class="smart-video w-full h-full object-cover cursor-pointer">
-                            <source src="https://res.cloudinary.com/dsxrjmcxs/video/upload/q_auto:eco,f_auto/v1784440819/lwrmd0jkmgurvv6dtvlb.mp4" type="video/mp4">
-                        </video>
-                        <button id="showSound" type="button" aria-label="الصوت" class="absolute bottom-3 left-3 w-9 h-9 rounded-full bg-slate-900/70 border border-slate-600 text-slate-100 flex items-center justify-center text-sm hover:bg-brand-500 hover:text-slate-950 transition-colors"><i class="fas fa-volume-xmark"></i></button>
-                        <div class="absolute bottom-0 inset-x-0 h-[3px] bg-slate-800/60 pointer-events-none"><div id="showProg" class="h-full bg-brand-400 shadow-[0_0_8px_rgba(45,212,191,.8)]" style="transform:scaleX(0);transform-origin:right"></div></div>
-                    </div>
+    <section class="relative w-full max-w-4xl mx-auto py-6 z-10 reveal-on-scroll">
+        <div class="relative rounded-3xl p-[1.5px] bg-gradient-to-br from-brand-400/70 via-slate-700 to-brand-600/70 shadow-[0_0_60px_rgba(20,184,166,0.22)]">
+            <div class="rounded-[1.4rem] overflow-hidden bg-slate-950">
+                <div class="flex items-center gap-2 px-4 py-2.5 bg-slate-900/90 border-b border-slate-700/60">
+                    <span class="w-2.5 h-2.5 rounded-full bg-red-400/80"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-400/80"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400/80"></span>
+                    <span class="ms-2 text-[11px] sm:text-xs text-slate-400 font-medium flex items-center gap-1.5"><i class="fas fa-play-circle text-brand-400"></i> عرض سريع لأعمالي</span>
+                </div>
+                <div class="aspect-video relative">
+                    <video id="showcase-video" muted loop playsinline preload="none" class="smart-video w-full h-full object-cover cursor-pointer">
+                        <source src="https://res.cloudinary.com/dsxrjmcxs/video/upload/q_auto:eco,f_auto/v1784440819/lwrmd0jkmgurvv6dtvlb.mp4" type="video/mp4">
+                    </video>
+                    <button id="showSound" type="button" aria-label="الصوت" class="absolute bottom-3 left-3 w-9 h-9 rounded-full bg-slate-900/70 border border-slate-600 text-slate-100 flex items-center justify-center text-sm hover:bg-brand-500 hover:text-slate-950 transition-colors"><i class="fas fa-volume-xmark"></i></button>
+                    <div class="absolute bottom-0 inset-x-0 h-[3px] bg-slate-800/60 pointer-events-none"><div id="showProg" class="h-full bg-brand-400 shadow-[0_0_8px_rgba(45,212,191,.8)]" style="transform:scaleX(0);transform-origin:right"></div></div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
         <div class="led-divider" aria-hidden="true"></div>
 
@@ -324,7 +333,7 @@
 
             <!-- زر عرض المزيد من المشاريع -->
             <div id="loadMoreWrap" class="mt-8 text-center hidden">
-                <button id="loadMoreBtn" type="button" class="px-8 py-3 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-500 via-brand-600 to-slate-800 hover:from-brand-400 hover:via-brand-500 hover:to-slate-700 text-white font-bold rounded-2xl border border-brand-400/40 shadow-[0_0_20px_rgba(20,184,166,0.25)] hover:shadow-[0_0_25px_rgba(20,184,166,0.4)] transition-all duration-300 inline-flex items-center gap-2">
+                <button id="loadMoreBtn" type="button" class="px-8 py-3 bg-gradient-to-r from-brand-600 to-slate-700 hover:from-brand-500 hover:to-slate-600 text-white font-bold rounded-2xl border border-brand-400/40 shadow-[0_0_20px_rgba(20,184,166,0.25)] hover:shadow-[0_0_25px_rgba(20,184,166,0.4)] transition-all duration-300 inline-flex items-center gap-2">
                     <span>عرض المزيد من المشاريع</span>
                     <i class="fas fa-chevron-down text-brand-300"></i>
                 </button>
@@ -336,7 +345,7 @@
         <section id="contact" class="py-8 scroll-mt-24">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
 
-                <div class="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-800 via-slate-900 to-slate-950 border border-brand-500/20 shadow-[0_10px_30px_rgba(20,184,166,0.1)] rounded-3xl p-5 sm:p-6 flex flex-col justify-center reveal-on-scroll">
+                <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-700 border border-brand-500/20 shadow-[0_10px_30px_rgba(20,184,166,0.1)] rounded-3xl p-5 sm:p-6 flex flex-col justify-center reveal-on-scroll">
                     <h3 id="contactTitle" class="text-xl sm:text-2xl font-bold mb-1 text-slate-100">استلم موقعك بأفضل سعر مع صيانة مجانية</h3>
                     <p id="contactSub" class="text-brand-300 text-sm mb-3 font-medium">طرق التواصل المتاحة</p>
 
@@ -413,7 +422,7 @@
         <div class="led-divider" aria-hidden="true"></div>
 
         <!-- نبذة عن المطور -->
-        <section class="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-800 via-slate-900 to-slate-950 border border-brand-500/20 shadow-[0_10px_30px_rgba(20,184,166,0.1)] rounded-3xl p-6 md:p-8 mt-6 mb-6 reveal-on-scroll">
+        <section class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-700 border border-brand-500/20 shadow-[0_10px_30px_rgba(20,184,166,0.1)] rounded-3xl p-6 md:p-8 mt-6 mb-6 reveal-on-scroll">
             <h3 id="aboutTitle" class="text-2xl font-bold text-slate-100 mb-3 border-r-4 border-brand-500 pr-4">من هو شهاب طارق صلاح؟</h3>
             <div id="aboutBody" class="text-slate-300 space-y-3 text-sm sm:text-base leading-relaxed">
                 <p>
@@ -429,19 +438,19 @@
     </main>
 
     <!-- الفوتر -->
-    <footer class="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-800 via-slate-900 to-slate-950 border-t border-brand-500/20 rounded-t-3xl py-10 text-center relative z-20 shadow-[0_-10px_30px_rgba(20,184,166,0.1)]">
-        <div class="max-w-4xl mx-auto px-6 space-y-3">
-            <!-- السطر الأول: الاسم والتخصص -->
-            <p class="text-sm md:text-base font-medium text-white tracking-wide">
-                تصميم وتطوير <span class="text-brand-400 font-bold">شهاب طارق صلاح</span> <span class="text-slate-400 text-xs md:text-sm">| مطور ويب Full-Stack</span>
-            </p>
+<footer class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-t border-brand-500/20 rounded-t-3xl py-10 text-center relative z-20 shadow-[0_-10px_30px_rgba(20,184,166,0.1)]">
+    <div class="max-w-4xl mx-auto px-6 space-y-3">
+        <!-- السطر الأول: الاسم والتخصص -->
+        <p class="text-sm md:text-base font-medium text-white tracking-wide">
+            تصميم وتطوير <span class="text-brand-400 font-bold">شهاب طارق صلاح</span> <span class="text-slate-400 text-xs md:text-sm">| مطور ويب Full-Stack</span>
+        </p>
 
-            <!-- السطر الثاني: الحقوق والتاريخ -->
-            <p class="text-xs text-slate-400">
-                جميع الحقوق محفوظة © <span id="year"></span> للمطور
-            </p>
-        </div>
-    </footer>
+        <!-- السطر الثاني: الحقوق والتاريخ -->
+        <p class="text-xs text-slate-400">
+            جميع الحقوق محفوظة © <span id="year"></span> للمطور
+        </p>
+    </div>
+</footer>
 
     <!-- Scripts -->
     <script>
@@ -479,7 +488,7 @@
         }
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
-        // 2. المراقب الشامل لسلاسة السكرول
+        // 2. المراقب الشامل المحسن لسلاسة السكرول
         document.addEventListener("DOMContentLoaded", () => {
             const scrollObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
@@ -496,7 +505,7 @@
 
             document.querySelectorAll('.reveal-on-scroll').forEach(el => scrollObserver.observe(el));
 
-            // مراقبة فيديو الهيرو
+            // مراقبة فيديو الهيرو فقط بدون صراع مع فيديو العرض
             const heroVid = document.getElementById('hero-video');
             if (heroVid) {
                 new IntersectionObserver((entries) => {
@@ -507,7 +516,7 @@
                 }, { threshold: 0.05 }).observe(heroVid);
             }
 
-            // 3. مراقب زر العودة للأعلى
+            // 3. مراقب زر العودة للأعلى (مع throttle عبر rAF لتخفيف الحمل أثناء السكرول)
             const backToTopBtn = document.getElementById('backToTopBtn');
             let ticking = false;
             window.addEventListener('scroll', () => {
